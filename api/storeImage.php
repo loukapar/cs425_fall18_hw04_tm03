@@ -1,17 +1,16 @@
 <?php
-	
-	
 	header('Access-Control-Allow-Origin: *');
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Methods: POST');
 	header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+			echo "hi";
 
+	/*
 	include_once '../config/Database.php';
 	include_once '../models/Pv.php';
 	
 	$target_dir = "cs425_fall18_hw04_tm03/resources/";
-		echo "hi";
-	/*
+
 	$target_file = $target_dir . "pv_" . $_POST["pvID"]
 	$uploadOk = 1;
 
