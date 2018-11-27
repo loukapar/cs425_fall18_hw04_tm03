@@ -3,11 +3,9 @@
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Methods: POST');
 	header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
-			echo "hi";
 
+	echo "hi";
 	/*
-	include_once '../config/Database.php';
-	include_once '../models/Pv.php';
 	
 	$target_dir = "cs425_fall18_hw04_tm03/resources/";
 
