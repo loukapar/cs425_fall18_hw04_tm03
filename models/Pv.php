@@ -52,26 +52,31 @@ class Pv {
 		// Execute query
 		$stmt->execute();
 
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-		$this->pv_id = $row['pv_id'];
-		$this->pv_name = $row['pv_name'];
-		$this->pv_photo = $row['pv_photo'];
-		$this->pv_address = $row['pv_address'];
-		$this->pv_coordinate_x = $row['pv_coordinate_x'];
-		$this->pv_coordinate_y = $row['pv_coordinate_y'];
-		$this->pv_operator = $row['pv_operator'];
-		$this->pv_date = $row['pv_date'];
-		$this->pv_description = $row['pv_description'];
-		$this->pv_power = $row['pv_power'];
-		$this->pv_annual_production = $row['pv_annual_production'];
-		$this->pv_co2_avoided = $row['pv_co2_avoided'];
-		$this->pv_reimbursement = $row['pv_reimbursement'];
-		$this->pv_solar_panel_module = $row['pv_solar_panel_module'];
-		$this->pv_azimuth_angl = $row['pv_azimuth_angl'];
-		$this->pv_inclination_angl = $row['pv_inclination_angl'];
-		$this->pv_communication = $row['pv_communication'];
-		$this->pv_inverter = $row['pv_inverter'];
-		$this->pv_sensors = $row['pv_sensors'];
+		$num = $stmt->rowCount();
+		if($num > 0) {
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			$this->pv_id = $row['pv_id'];
+			$this->pv_name = $row['pv_name'];
+			$this->pv_photo = $row['pv_photo'];
+			$this->pv_address = $row['pv_address'];
+			$this->pv_coordinate_x = $row['pv_coordinate_x'];
+			$this->pv_coordinate_y = $row['pv_coordinate_y'];
+			$this->pv_operator = $row['pv_operator'];
+			$this->pv_date = $row['pv_date'];
+			$this->pv_description = $row['pv_description'];
+			$this->pv_power = $row['pv_power'];
+			$this->pv_annual_production = $row['pv_annual_production'];
+			$this->pv_co2_avoided = $row['pv_co2_avoided'];
+			$this->pv_reimbursement = $row['pv_reimbursement'];
+			$this->pv_solar_panel_module = $row['pv_solar_panel_module'];
+			$this->pv_azimuth_angl = $row['pv_azimuth_angl'];
+			$this->pv_inclination_angl = $row['pv_inclination_angl'];
+			$this->pv_communication = $row['pv_communication'];
+			$this->pv_inverter = $row['pv_inverter'];
+			$this->pv_sensors = $row['pv_sensors'];
+		} else {
+			$this->pv_id = -1;
+		}
     }
 }
 ?>
