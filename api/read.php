@@ -14,7 +14,7 @@
   $pv = new Pv($db);
 
   // PV query
-  $result = $post->read();
+  $result = $pv->read();
   // Get row count
   $num = $result->rowCount();
 
