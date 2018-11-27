@@ -10,10 +10,11 @@
 	include_once '../models/Pv.php';
 	
 	$target_dir = "cs425_fall18_hw04_tm03/resources/";
+		echo "hi";
+	/*
 	$target_file = $target_dir . "pv_" . $_POST["pvID"]
 	$uploadOk = 1;
-	echo "hi";
-	/*
+
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["uploadImage"])) {
