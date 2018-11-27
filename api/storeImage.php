@@ -9,7 +9,7 @@
 	include_once '../config/Database.php';
 	include_once '../models/Pv.php';
 	
-	$target_dir = "../resources/";
+	$target_dir = cs425_fall18_hw04_tm03/resources/";
 	$target_file = $target_dir . "pv_" . $_POST["pvID"]
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
