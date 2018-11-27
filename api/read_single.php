@@ -3,31 +3,44 @@
   header('Access-Control-Allow-Origin: *');
   header('Content-Type: application/json');
 
-  include_once '../../config/Database.php';
-  include_once '../../models/Post.php';
+  include_once '../config/Database.php';
+  include_once '../models/Pv.php';
 
   // Instantiate DB & connect
   $database = new Database();
   $db = $database->connect();
 
   // Instantiate blog post object
-  $post = new Post($db);
+  $pv = new Pv($db);
 
   // Get ID
-  $post->id = isset($_GET['id']) ? $_GET['id'] : die();
+  $pv->pv_id = isset($_GET['pv_id']) ? $_GET['pv_id'] : die();
 
   // Get post
-  $post->read_single();
+  $pv->read_single();
 
   // Create array
-  $post_arr = array(
-    'id' => $post->id,
-    'title' => $post->title,
-    'body' => $post->body,
-    'author' => $post->author,
-    'category_id' => $post->category_id,
-    'category_name' => $post->category_name
-  );
+  $pv_array = array(  
+		'pv_id' => $pv->pv_id,
+		'pv_name' => $pv->pv_name,
+		'pv_photo' => $pv->pv_photo,
+		'pv_address' => $pv->pv_address,
+		'pv_coordinate_x' => $pv->pv_coordinate_x,
+		'pv_coordinate_y' => $pv->pv_coordinate_y,
+		'pv_operator' => $pv->pv_operator,
+		'pv_date' => $pv->pv_date,
+		'pv_description' => $pv->pv_description,
+		'pv_power' => $pv->pv_power,
+		'pv_annual_production' => $pv->pv_annual_production,
+		'pv_co2_avoided' => $pv->pv_co2_avoided,
+		'pv_reimbursement' => $pv->pv_reimbursement,
+		'pv_solar_panel_module' => $pv->pv_solar_panel_module,
+		'pv_azimuth_angl' => $pv->pv_azimuth_angl,
+		'pv_inclination_angl' => $pv->pv_inclination_angl,
+		'pv_communication' => $pv->pv_communication,
+		'pv_inverter' => $pv->pv_inverter,
+		'pv_sensors' => $pv->pv_sensors
+	);
 
   // Make JSON
-  print_r(json_encode($post_arr));
+  echo json_encode($pv_array);

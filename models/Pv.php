@@ -37,7 +37,7 @@ class Pv {
 		$stmt->execute();
 		return $stmt;
 	}
-	/*
+	
 	//get single pv_address
     public function read_single() {
 		// Create query
@@ -73,6 +73,5 @@ class Pv {
 		$this->pv_inverter = $row['pv_inverter'];
 		$this->pv_sensors = $row['pv_sensors'];
     }
-	*/
 }
 ?>
