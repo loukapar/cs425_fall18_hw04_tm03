@@ -1,6 +1,7 @@
 <?php
 $target_dir = "../resources/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//basename($_FILES["fileToUpload"]["name"])
+$target_file = $target_dir . "pv1";
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
