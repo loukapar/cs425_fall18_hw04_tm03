@@ -78,7 +78,7 @@ class Pv {
 			$this->pv_id = -1;
 		}
     }
-	/*
+	
     // Create pv
     public function create() {
 		
@@ -146,7 +146,7 @@ class Pv {
 
 		return -1;
     }
-	
+	/*
 	public function update($data) {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
