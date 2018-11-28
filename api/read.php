@@ -2,23 +2,19 @@
   // Headers
   header('Access-Control-Allow-Origin: *');
   header('Content-Type: application/json');
-
   include_once '../config/Database.php';
   include_once '../models/Pv.php';
- echo "hi";
+
   // Instantiate DB & connect
   $database = new Database();
   $db = $database->connect();
- echo "hi";
+
   // Instantiate pv object
   $pv = new Pv($db);
 
   // PV query
-  echo "hi";
-
   $result = $pv->read();
   // Get row count
-  echo "bye";
   $num = $result->rowCount();
 
   // Check if any posts
