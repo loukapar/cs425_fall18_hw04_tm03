@@ -87,7 +87,7 @@ class Pv {
 			pv_coordinate_y = :coordinate_y, pv_operator = :operator, pv_date = :date, pv_description = :description, pv_power = :power, 
 			pv_annual_production = :annual_production, pv_co2_avoided = :co2_avoided, pv_reimbursement = :reimbursement, 
 			pv_solar_panel_module = :solar_panel_module, pv_azimuth_angl = :azimuth_angl, pv_inclination_angl = :inclination_angl, 
-			pv_communication = :communication, pv_inverter = :inverter, pv_sensors = :sensor; SELECT LAST_INSERT_ID();';
+			pv_communication = :communication, pv_inverter = :inverter, pv_sensors = :sensor;';
 
           // Prepare statement
 		$stmt = $this->conn->prepare($query);
@@ -132,6 +132,27 @@ class Pv {
 
 		// Execute query
 		$result = $stmt->execute();
+		
+		if($result) {
+			$query2 = 'SELECT LAST_INSERT_ID();';
+			$stmt2 = $this->conn->prepare($query2);
+			$stmt2->execute();
+			$num2 = $stmt2->rowCount();
+			if($num2 > 0) {
+				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+				$new_pv_id = $row2['pv_id'];
+			}
+			return $new_pv_id;
+		}
+
+		// Print error if something goes wrong
+		printf("Error: %s.\n", $stmt->error);
+
+		return "-1";
+		
+		
+	}
+	/*
 
 		if(isset($result) && !(trim($result) === '') && ($result > 0)) {
 			$new_pv_id;
@@ -141,8 +162,7 @@ class Pv {
 			}
 			return $new_pv_id;
 		}
-	}
-	/*
+
 		// Print error if something goes wrong
 		printf("Error: %s.\n", $stmt->error);
 
