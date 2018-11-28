@@ -129,7 +129,8 @@ class Pv {
 		$stmt->bindParam(':communication', $this->pv_communication);
 		$stmt->bindParam(':inverter', $this->pv_inverter);
 		$stmt->bindParam(':sensor', $this->pv_sensors);
-	
+	}
+	/*
 		// Execute query
 		$result = $stmt->execute();
 		if(isset($result) && !trim($result) === '' && $result > 0) {
@@ -146,7 +147,7 @@ class Pv {
 
 		return -1;
     }
-	/*
+	
 	
 	public function update($data) {
 		//create query
