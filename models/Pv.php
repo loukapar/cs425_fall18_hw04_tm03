@@ -144,8 +144,6 @@ class Pv {
 			}
 			return $new_pv_id;
 		}
-
-		// Print error if something goes wrong
 		printf("Error: %s.\n", $stmt->error);
 
 		return "-1";
