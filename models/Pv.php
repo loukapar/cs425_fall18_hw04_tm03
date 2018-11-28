@@ -144,14 +144,14 @@ class Pv {
 			}
 			return $new_pv_id;
 		}
-					}
-	/*
+
 		printf("Error: %s.\n", $stmt->error);
 
 		return "-1";
 		
 		
-
+					}
+	/*
 
 		if(isset($result) && !(trim($result) === '') && ($result > 0)) {
 			$new_pv_id;
