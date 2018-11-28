@@ -14,8 +14,10 @@
   $pv = new Pv($db);
 
   // PV query
+  echo "hi";
   $result = $pv->read();
   // Get row count
+  echo "bye";
   $num = $result->rowCount();
 
   // Check if any posts
