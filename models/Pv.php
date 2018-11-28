@@ -37,7 +37,7 @@ class Pv {
 		$stmt->execute();
 		return $stmt;
 	}
-	
+	/*
 	//get single pv_address
     public function read_single() {
 		// Create query
@@ -146,16 +146,6 @@ class Pv {
 
 		return -1;
     }
-
-	/*
-	public function storeImage() {
-		$target_dir = "cs425_fall18_hw04_tm03/resources";
-		$target_file = $target_dir . basename($_FILES["imageToUpload"]["name");
-		$uploadOk = 1;
-		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-		
-	}
-	*/
 	
 	public function update($data) {
 		//create query
@@ -212,6 +202,6 @@ class Pv {
 
           return false;
     }
-	
+	*/
 }
 ?>
