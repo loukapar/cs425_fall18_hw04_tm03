@@ -37,7 +37,7 @@ class Pv {
 		$stmt->execute();
 		return $stmt;
 	}
-	/*
+	
 	//get single pv_address
     public function read_single() {
 		// Create query
@@ -78,7 +78,7 @@ class Pv {
 			$this->pv_id = -1;
 		}
     }
-	
+	/*
     // Create pv
     public function create() {
 		
