@@ -129,10 +129,11 @@ class Pv {
 		$stmt->bindParam(':communication', $this->pv_communication);
 		$stmt->bindParam(':inverter', $this->pv_inverter);
 		$stmt->bindParam(':sensor', $this->pv_sensors);
-	}
-	/*
+
 		// Execute query
 		$result = $stmt->execute();
+	}
+	/*
 		if(isset($result) && !trim($result) === '' && $result > 0) {
 			$new_pv_id;
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
