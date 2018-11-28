@@ -132,9 +132,8 @@ class Pv {
 
 		// Execute query
 		$result = $stmt->execute();
-	}
-	/*
-		if(isset($result) && !trim($result) === '' && $result > 0) {
+
+		if(isset($result) && !(trim($result) === '') && ($result > 0)) {
 			$new_pv_id;
 			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
 				extract($row);
@@ -142,7 +141,8 @@ class Pv {
 			}
 			return $new_pv_id;
 		}
-
+	}
+	/*
 		// Print error if something goes wrong
 		printf("Error: %s.\n", $stmt->error);
 
