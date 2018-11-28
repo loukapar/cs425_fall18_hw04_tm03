@@ -132,8 +132,7 @@ class Pv {
 
 		// Execute query
 		$result = $stmt->execute();
-			}
-	/*
+
 		if($result) {
 			$query2 = 'SELECT LAST_INSERT_ID();';
 			$stmt2 = $this->conn->prepare($query2);
@@ -145,6 +144,8 @@ class Pv {
 			}
 			return $new_pv_id;
 		}
+					}
+	/*
 		printf("Error: %s.\n", $stmt->error);
 
 		return "-1";
