@@ -1,4 +1,6 @@
 <?php
+
+$pv_id = $_POST["pv_id"];
 $target_dir = "../resources/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -35,7 +37,7 @@ if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-	$target_file = $target_dir . "pv1" . $imageFileType;
+	$target_file = $target_dir . "pv" . $pv_id . '.' . $imageFileType;
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". $target_file . " has been uploaded.";
     } else {
