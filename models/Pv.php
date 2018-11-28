@@ -187,5 +187,31 @@ class Pv {
 
 		return false;
     }
+	
+	    // Delete pv
+    public function delete($pv_id) {
+          // Create query
+          $query = 'DELETE FROM ' . $this->table . ' WHERE pv_id = :pv_id';
+
+          // Prepare statement
+          $stmt = $this->conn->prepare($query);
+
+          // Clean data
+          $pv_id = htmlspecialchars(strip_tags($pv_id));
+
+          // Bind data
+          $stmt->bindParam(':pv_id', $pv_id);
+
+          // Execute query
+          if($stmt->execute()) {
+            return true;
+          }
+
+          // Print error if something goes wrong
+          printf("Error: %s.\n", $stmt->error);
+
+          return false;
+    }
+	
 }
 ?>
