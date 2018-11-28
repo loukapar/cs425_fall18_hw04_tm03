@@ -15,7 +15,7 @@
 
   // PV query
   echo "hi";
-  /*
+
   $result = $pv->read();
   // Get row count
   echo "bye";
@@ -45,5 +45,4 @@
       array('message' => 'No PV Found')
     );
   }
-  */
 ?>
