@@ -168,12 +168,13 @@ class Pv {
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
 		if($stmt->execute()) {
+			/*
 			$this->pv_id = $this->conn->lastInsertId();
 			if ($this->IsNullOrEmptyString($this->encoded_image) == false){
 				$array = array (false, $this->pv_id);
 				return $array;
 			} 
-			/*else {
+			else {
 				$res = $this->loadImage();
 				if ($res == true){
 					$array = array (true, $this->pv_id);
