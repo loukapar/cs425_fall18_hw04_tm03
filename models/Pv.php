@@ -142,7 +142,7 @@ class Pv {
 				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 				$new_pv_id = $row2['pv_id'];
 			}
-			return $new_pv_id;
+			return "violari eisai mikrotsoutsounos!";
 		}
 
 		printf("Error: %s.\n", $stmt->error);
