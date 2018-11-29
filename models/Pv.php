@@ -86,7 +86,7 @@ class Pv {
 	
 	public function loadImage(){
 		if (preg_match('/^data:image\/(\w+);base64,/', $this->encoded_image, $type)) {
-			$data = substr($data, strpos($data, ',') + 1);
+			$data = substr($this->encoded_image, strpos($data, ',') + 1);
 			$type = strtolower($type[1]); // jpg, png, gif
 
 			if (!in_array($type, [ 'jpg', 'jpeg', 'gif', 'png' ])) {
