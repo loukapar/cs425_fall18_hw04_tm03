@@ -131,9 +131,8 @@ class Pv {
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
 		// Execute query
-		$result = $stmt->execute();
 		$new_pv_id = "-1";
-		if($result) {
+		if($stmt->execute()) {
 			$query2 = 'SELECT LAST_INSERT_ID();';
 			$stmt2 = $this->conn->prepare($query2);
 			$stmt2->execute();
@@ -147,7 +146,7 @@ class Pv {
 
 		printf("Error: %s.\n", $stmt->error);
 
-		return $new_pv_id;
+		return "problem";
 		
 		
 					}
