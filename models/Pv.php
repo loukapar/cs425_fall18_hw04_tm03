@@ -167,7 +167,6 @@ class Pv {
 		$stmt->bindParam(':inverter', $this->pv_inverter);
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
-		$res = -1;
 		if($stmt->execute()) {
 			$this->pv_id = $this->conn->lastInsertId();
 			if ($this->IsNullOrEmptyString($pv->encoded_image)){
@@ -185,7 +184,8 @@ class Pv {
 			}
 		}
 		
-		return array (false, -1);
+		$array = array (false, -1);
+		return $array;
 	}
 
 	public function update($data) {
