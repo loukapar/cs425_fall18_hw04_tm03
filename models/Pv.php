@@ -109,12 +109,12 @@ class Pv {
 		$file_dir = "../resources/" . $file_name;
 		file_put_contents($file_dir, $data);
 		
-		//$update_image_pv = array (
-		//	$this->pv_id,
-		//	array("pv_photo", $file_name)
-		//);
+		$update_image_pv = array (
+			$this->pv_id,
+			array("pv_photo", $file_name)
+		);
 		
-		return true;//$this->update($update_image_pv);
+		return $this->update($update_image_pv);
 	}
 	
     // Create pv
