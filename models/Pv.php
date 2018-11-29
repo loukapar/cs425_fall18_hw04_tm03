@@ -103,22 +103,13 @@ class Pv {
 		$file_name = "pv" . $this->pv_id . "." . $type;
 		$file_dir = "../resources/" . $file_name;
 		file_put_contents($file_dir, $data);
-		return $file_name;
-	}
-	
-	public function getLastPvId() {
-		return $this->conn->lastInsertId();
-		/*
-		$query = "SELECT LAST_INSERT_ID();";
-		$stmt = $this->conn->prepare($query);
-		$stmt->execute();
-		$num = $stmt->rowCount();
-		if($num > 0) {
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			return $row['pv_id'];
-		}
-		return -1;
-		*/
+		
+		$update_image_pv = array (
+			$this->pv_id,
+			array("pv_photo", $file_name)
+		);
+		
+		return $this->update($update_image_pv);
 	}
 	
     // Create pv
@@ -174,17 +165,17 @@ class Pv {
 
 		$res = -1;
 		if($stmt->execute()) {
-			
-			$last_inserted_pv_id = $this->getLastPvId();
-			if ($last_inserted_pv_id > 0){
-				return $last_inserted_pv_id;
-			}
-			//$res = $this->loadImage();
+			$this->pv_id = $this->conn->lastInsertId();
+			$res = $this->loadImage();
+			if ($res == true)
+				return array (true, pv->pv_id);
+			else 
+				return array (false, pv->pv_id);
 		}
 		
-		return $res;
+		return array (false, -1);
 	}
-	/*
+
 	public function update($data) {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
@@ -216,7 +207,7 @@ class Pv {
 		return false;
     }
 	
-	
+		/*
 	    // Delete pv
     public function delete($pv_id) {
           // Create query
