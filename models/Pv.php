@@ -169,11 +169,10 @@ class Pv {
 
 		if($stmt->execute()) {
 			$this->pv_id = $this->conn->lastInsertId();
-			if ($this->IsNullOrEmptyString($this->encoded_image) == false){
+			if ($this->IsNullOrEmptyString($this->encoded_image) == true){
 				$array = array (false, $this->pv_id);
 				return $array;
-			} 
-			else {
+			} else {
 				$res = $this->loadImage();
 				if ($res == true){
 					$array = array (true, $this->pv_id);
