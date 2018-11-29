@@ -170,21 +170,21 @@ class Pv {
 		if($stmt->execute()) {
 			$this->pv_id = $this->conn->lastInsertId();
 			if ($this->IsNullOrEmptyString($this->encoded_image) == true){
-				$array = array (false, $this->pv_id);
+				$array = array ("img_response" => "", "pv_id" => $this->pv_id);
 				return $array;
 			} else {
 				$res = $this->loadImage();
 				if ($res == true){
-					$array = array (true, $this->pv_id);
+					$array = array ("img_response" => "Image uploaded successfully!", "pv_id" => $this->pv_id);
 					return $array;
 				} else {
-					$array = array (false, $this->pv_id);
+					$array = array ("img_response" => "Something went wrong with the image. Try upload again in edit section!", "pv_id" => $this->pv_id);
 					return $array;
 				}
 			}
 		}
 		
-		$array = array (false, -1);
+		$array = array ("img_response" => "Something went wrong! Try again", "pv_id" => -1);
 		return $array;
 	}
 /*
