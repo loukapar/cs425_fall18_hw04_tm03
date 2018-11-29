@@ -40,13 +40,5 @@
 
 	// Create pv
 	$result = $pv->create();
-	
-	if ($result[0] == true) {
-		$array = array ("img_response" => "Image uploaded successfully!", "pv_id" => $result[1]);
-		echo json_encode($array);
-	} else {
-		$array = array ("img_response" => "Something went wrong with the image. Try upload again in edit section!", "pv_id" => $result[1]);
-		echo json_encode($array);
-	}
-	
+	echo json_encode($array);	
 ?>
