@@ -171,10 +171,11 @@ class Pv {
 
 		$res = -1;
 		if($stmt->execute()) {
-			$last_inserted_pv_id = $this->getLastPvId();
-			if ($last_inserted_pv_id > 0){
-				return $last_inserted_pv_id
-			}
+			
+			//$last_inserted_pv_id = $this->getLastPvId();
+			//if ($last_inserted_pv_id > 0){
+			//	return $last_inserted_pv_id
+			//}
 			//$res = $this->loadImage();
 		}
 		
