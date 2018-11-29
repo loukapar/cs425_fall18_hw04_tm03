@@ -135,12 +135,12 @@ class Pv {
 		$stmt->bindParam(':inverter', $this->pv_inverter);
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
+		$res = -1;
 		if($stmt->execute()) {
-			return 2;
-				
+			$res = loadImage();
 		}
 		
-		return -1;
+		return $res;
 	}
 	
 
