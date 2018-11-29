@@ -147,7 +147,7 @@ class Pv {
 		if($stmt->execute()) {
 			return getLastInsertedID();
 		}
-		return -1;
+		//return -1;
 		//printf("Error: %s.\n", $stmt->error);
 
 		//return $new_pv_id;
