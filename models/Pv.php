@@ -90,30 +90,30 @@ class Pv {
 			$type = strtolower($type[1]); // jpg, png, gif
 
 			if (!in_array($type, [ 'jpg', 'jpeg', 'gif', 'png' ])) {
-				return -1;
+				return false;
 				//throw new \Exception('invalid image type');
 			}
 
 			$data = base64_decode($data);
 
 			if ($data === false) {
-				return -1;
+				return false;
 				//throw new \Exception('base64_decode failed');
 			}
 		} else {
-			return -1;
+			return false;
 			//throw new \Exception('did not match data URI with image data');
 		}
 		$file_name = "pv" . $this->pv_id . "." . $type;
 		$file_dir = "../resources/" . $file_name;
 		file_put_contents($file_dir, $data);
 		
-		$update_image_pv = array (
-			$this->pv_id,
-			array("pv_photo", $file_name)
-		);
+		//$update_image_pv = array (
+		//	$this->pv_id,
+		//	array("pv_photo", $file_name)
+		//);
 		
-		return $this->update($update_image_pv);
+		return true;//$this->update($update_image_pv);
 	}
 	
     // Create pv
