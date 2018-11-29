@@ -115,7 +115,7 @@ class Pv {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			return $row['pv_id'];
 		}
-		return false;
+		return -1;
 	}
 	
     // Create pv
@@ -172,7 +172,7 @@ class Pv {
 		$res = -1;
 		if($stmt->execute()) {
 			$last_inserted_pv_id = $this->getLastPvId();
-			if (!($last_inserted_pv_id == false)){
+			if ($last_inserted_pv_id > 0){
 				return $last_inserted_pv_id
 			}
 			//$res = $this->loadImage();
