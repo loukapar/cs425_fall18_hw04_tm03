@@ -172,7 +172,8 @@ class Pv {
 			if ($this->IsNullOrEmptyString($this->encoded_image)){
 				$array = array (false, $this->pv_id);
 				return $array;
-			} else {
+			} 
+			/*else {
 				$res = $this->loadImage();
 				if ($res == true){
 					$array = array (true, $this->pv_id);
@@ -182,6 +183,7 @@ class Pv {
 					return $array;
 				}
 			}
+			*/
 		}
 		
 		$array = array (false, -1);
