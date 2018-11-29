@@ -133,6 +133,8 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
+			return mysql_insert_id();
+			/*
 			$query2 = 'SELECT LAST_INSERT_ID();';
 			$stmt2 = $this->conn->prepare($query2);
 			$stmt2->execute();
@@ -141,7 +143,7 @@ class Pv {
 				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 				$new_pv_id = (int)$row2['pv_id'];
 			}
-			return mysql_insert_id();
+			*/
 		}
 
 		printf("Error: %s.\n", $stmt->error);
