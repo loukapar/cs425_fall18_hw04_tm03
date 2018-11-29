@@ -146,7 +146,8 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
-			return getLastInsertedID();
+			return "hi";
+		//	return getLastInsertedID();
 		}
 		//return -1;
 		//printf("Error: %s.\n", $stmt->error);
