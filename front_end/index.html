@@ -93,12 +93,12 @@
 
                         <div class="form-group col-md-6">
                             <label for="annual_production" class="col-form-label">Annual production:</label>
-                            <input type="text" class="form-control" id="annual_production">
+                            <input type="number" class="form-control" id="annual_production">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="CO2_avoided" class="col-form-label">CO2 avoided:</label>
-                            <input type="text" class="form-control" id="CO2_avoided">
+                            <input type="number" class="form-control" id="CO2_avoided">
                         </div>
 
                         <div class="form-group col-md-6">
@@ -135,6 +135,11 @@
                         <div class="form-group col-md-6">
                             <label for="inverter" class="col-form-label">Inverter:</label>
                             <input type="text" class="form-control" id="inverter">
+                        </div>
+
+                        <div class="form-group" style="margin-left:10px; margin-right: 10px">
+                            <label for="operator" class="col-form-label">Operator:</label>
+                            <input type="text" class="form-control" id="operator">
                         </div>
 
                         <div class="form-group" style="margin-left:10px; margin-right: 10px">
@@ -257,7 +262,11 @@
                                 <span>Address:</span>
                                 <span id="modal_address"></span>
                             </p>
-                            <p>No pressure, your product will be waiting for you in the cart.</p>
+
+                            <p>
+                                <span>Operator:</span>
+                                <span id="modal_operator"></span>
+                            </p>
                         </div>
                     </div>
                 </div>
