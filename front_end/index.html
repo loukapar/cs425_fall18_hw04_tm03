@@ -22,6 +22,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="operations.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
 
 </head>
 
@@ -85,14 +87,6 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label class="custom-file">
-                                <label for="custom-file-input" class="col-form-label">Upload:</label>
-                                <input type="file" id="file" class="custom-file-input">
-                                <span class="custom-file-control"></span>
-                            </label>
-                        </div>
-
-                        <div class="form-group col-md-6">
                             <label for="sensors" class="col-form-label">Sensors:</label>
                             <input type="text" class="form-control" id="sensors">
                         </div>
@@ -133,6 +127,10 @@
                             <input type="text" class="form-control" id="communication">
                         </div>
 
+                        <div class="form-group col-md-6">
+                            <label for="commission_date" class="col-form-label">Commission date:</label>
+                            <input type="date" class="form-control" id="commission_date">
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label for="inverter" class="col-form-label">Inverter:</label>
@@ -140,21 +138,139 @@
                         </div>
 
                         <div class="form-group" style="margin-left:10px; margin-right: 10px">
+                            <label class="custom-file">
+                                <label for="custom-file-input" class="col-form-label">Upload:</label>
+                                <input type="file" id="file" class="custom-file-input">
+                                <span class="custom-file-control"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group" style="margin-left:10px; margin-right: 10px">
                             <label for="message-text" class="col-form-label">Description:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <textarea class="form-control" id="message_text"></textarea>
                         </div>
 
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="buttonClose" type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-                    <button id="buttonSave" type="button" class="btn btn-primary" >Save</button>
-                    <button id="buttonDelete" type="button" class="btn btn-primary" >Delete</button>
-                    <button id="buttonAdd" type="button" class="btn btn-primary" >Add</button>
+                    <button id="buttonClose" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="buttonSave" type="button" class="btn btn-primary">Save</button>
+                    <button id="buttonAdd" type="button" class="btn btn-primary">Add</button>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="pv_profile_modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-3">
+                            <p></p>
+                            <p class="text-center"><img src="img/image.jpg" class="img-rounded" alt="Cinque Terre"
+                                    width="60%" height="200px"></p>
+                        </div>
+
+                        <div class="col-9">
+                            <p>
+                                <span>Name:</span>
+                                <span id="modal_name"></span>
+                            </p>
+                            <p>
+                                <span>System Power:</span>
+                                <span id="modal_systemPower"></span>
+                            </p>
+
+                            <p>
+                                <span>Sensors:</span>
+                                <span id="modal_sensors"></span>
+                            </p>
+
+                            <p>
+                                <span>Annual Production:</span>
+                                <span id="modal_annualPr"></span>
+                            </p>
+
+                            <p>
+                                <span>CO2 avoided:</span>
+                                <span id="modal_COavoided"></span>
+                            </p>
+
+                            <p>
+                                <span>Reimbursement:</span>
+                                <span id="modal_reimbursement"></span>
+                            </p>
+                            <p>
+                                <span>Solar panel modules:</span>
+                                <span id="modal_solarPanelModules"></span>
+                            </p>
+                            <p>
+                                <span>Azimuth angle:</span>
+                                <span id="modal_azimuthAngle"></span>
+                            </p>
+                            <p>
+                                <span>Inclination angle:</span>
+                                <span id="modal_inclinationAngle"></span>
+                            </p>
+
+                            <p>
+                                <span>Communication:</span>
+                                <span id="modal_communication"></span>
+                            </p>
+
+                            <p>
+                                <span>Commission Date:</span>
+                                <span id="modal_date"></span>
+                            </p>
+
+                            <p>
+                                <span>Inverter:</span>
+                                <span id="modal_inverter"></span>
+                            </p>
+
+                            <p>
+                                <span>Description:</span>
+                                <span id="modal_description"></span>
+                            </p>
+                            <p>
+                                <span>Location:</span>
+                            </p>
+                            <p>
+                                <span>Coordinates:</span>
+                                X : <span id="modal_corX"></span>
+                                Y : <span id="modal_corY"></span>
+                            </p>
+
+                            <p>
+                                <span>Address:</span>
+                                <span id="modal_address"></span>
+                            </p>
+                            <p>No pressure, your product will be waiting for you in the cart.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="buttonEdit" type="button" class="btn btn-primary">Edit</button>
+                    <button id="buttonDelete" type="button" class="btn btn-primary">Delete</button>
+                </div>
+
+            </div>
+        </div>
 
 
 </body>
