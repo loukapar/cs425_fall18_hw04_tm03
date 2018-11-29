@@ -87,7 +87,8 @@ class Pv {
 		$num = $stmt->rowCount();
 		if($num > 0) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			return $row['pv_id'];
+			return "hi";
+			//return $row['pv_id'];
 		}
 	}
 	
