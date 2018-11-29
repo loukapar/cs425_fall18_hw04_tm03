@@ -105,7 +105,7 @@ class Pv {
 		file_put_contents($file_dir, $data);
 		return $file_name;
 	}
-	
+	/*
 	public function getLastPvId() {
 		$query = "SELECT LAST_INSERT_ID();";
 		$stmt = $this->conn->prepare($query);
@@ -117,12 +117,12 @@ class Pv {
 		}
 		return -1;
 	}
-	
+	*/
     // Create pv
     public function create() {
 		
 		// Create query
-		$query = 'INSERT INTO ' . $this->table . ' SET pv_name = :name, pv_photo = :photo, pv_address = :address, pv_coordinate_x = :coordinate_x, 
+		$query = 'INSERT INTO ' . $this->table . ' SET pv_name = :name, pv_address = :address, pv_coordinate_x = :coordinate_x, 
 			pv_coordinate_y = :coordinate_y, pv_operator = :operator, pv_date = :date, pv_description = :description, pv_power = :power, 
 			pv_annual_production = :annual_production, pv_co2_avoided = :co2_avoided, pv_reimbursement = :reimbursement, 
 			pv_solar_panel_module = :solar_panel_module, pv_azimuth_angl = :azimuth_angl, pv_inclination_angl = :inclination_angl, 
