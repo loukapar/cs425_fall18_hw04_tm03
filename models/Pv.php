@@ -23,6 +23,7 @@ class Pv {
 	public $pv_communication;
 	public $pv_inverter;
 	public $pv_sensors;
+	public $encoded_image;
 	
 	public function __construct($db) {
 		$this->conn = $db;
@@ -79,20 +80,6 @@ class Pv {
 		}
     }
 	
-	function getLastInsertedID(){
-		$query = 'SELECT MAX(pv_id) FROM PVS;';
-		$stmt = $this->conn->prepare($query);
-		$stmt->execute();
-
-		$num = $stmt->rowCount();
-		if($num > 0) {
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			return "hi";
-			//return $row['pv_id'];
-		}
-		return "bye";
-	}
-	
     // Create pv
     public function create() {
 		
@@ -144,25 +131,11 @@ class Pv {
 		$stmt->bindParam(':inverter', $this->pv_inverter);
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
-		// Execute query
-		$new_pv_id = -1;
 		if($stmt->execute()) {
-			$query2 = 'SELECT max(pv_id) FROM PVS';
-			$stmt2 = $this->conn->prepare($query2);
-			$stmt2->execute();
-
-			$num2 = $stmt2->rowCount();
-			if($num2 > 0) {
-				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-				return $row2['pv_id'];
-				//return $row['pv_id'];
-			}
-			return "bye";
+			return 1;
 		}
-		//return -1;
-		//printf("Error: %s.\n", $stmt->error);
-
-		//return $new_pv_id;
+		
+		return -1;
 	}
 	
 	/*
