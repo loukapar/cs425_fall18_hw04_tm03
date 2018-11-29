@@ -28,7 +28,7 @@
 		$pv_item = array(
 			'pv_id' => $pv_id,
 			'pv_coordinate_x' => $pv_coordinate_x,
-			'$pv_coordinate_y' => $pv_coordinate_y
+			'pv_coordinate_y' => $pv_coordinate_y
 		);
 		array_push($pv_array, $pv_item);
     }
