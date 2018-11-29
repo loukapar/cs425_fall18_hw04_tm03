@@ -131,7 +131,7 @@ class Pv {
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
 		// Execute query
-		$new_pv_id = "-1";
+		$new_pv_id = -1;
 		if($stmt->execute()) {
 			$query2 = 'SELECT LAST_INSERT_ID();';
 			$stmt2 = $this->conn->prepare($query2);
@@ -139,14 +139,14 @@ class Pv {
 			$num2 = $stmt2->rowCount();
 			if($num2 > 0) {
 				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-				$new_pv_id = $row2['pv_id'];
+				$new_pv_id = (int)$row2['pv_id'];
 			}
-			return "1";
+			return $new_pv_id;
 		}
 
 		printf("Error: %s.\n", $stmt->error);
 
-		return "0";
+		return $new_pv_id;
 	}
 	/*
 
