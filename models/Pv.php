@@ -105,7 +105,7 @@ class Pv {
 		file_put_contents($file_dir, $data);
 		return $file_name;
 	}
-	/*
+	
 	public function getLastPvId() {
 		$query = "SELECT LAST_INSERT_ID();";
 		$stmt = $this->conn->prepare($query);
@@ -117,7 +117,7 @@ class Pv {
 		}
 		return -1;
 	}
-	*/
+	
     // Create pv
     public function create() {
 		
@@ -172,10 +172,10 @@ class Pv {
 		$res = -1;
 		if($stmt->execute()) {
 			
-			//$last_inserted_pv_id = $this->getLastPvId();
-			//if ($last_inserted_pv_id > 0){
-			//	return $last_inserted_pv_id
-			//}
+			$last_inserted_pv_id = $this->getLastPvId();
+			if ($last_inserted_pv_id > 0){
+				return $last_inserted_pv_id
+			}
 			//$res = $this->loadImage();
 		}
 		
