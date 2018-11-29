@@ -137,7 +137,7 @@ class Pv {
 
 		$res = -1;
 		if($stmt->execute()) {
-			$res = loadImage();
+			$res = $this->loadImage();
 		}
 		
 		return $res;
