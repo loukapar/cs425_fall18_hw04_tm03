@@ -147,7 +147,17 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
-			return getLastInsertedID();
+			$query2 = 'SELECT MAX(pv_id) FROM PVS;';
+			$stmt2 = $this->conn->prepare($query2);
+			$stmt2->execute();
+
+			$num2 = $stmt2->rowCount();
+			if($num2 > 0) {
+				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+				return $row2['pv_id'];
+				//return $row['pv_id'];
+			}
+			return "bye";
 		}
 		//return -1;
 		//printf("Error: %s.\n", $stmt->error);
