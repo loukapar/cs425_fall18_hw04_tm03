@@ -85,23 +85,24 @@ class Pv {
     }
 	
 	public function loadImage(){
-		if (preg_match('/^data:image\/(\w+);base64,/', $this->encoded_image, $type)) {
+		$data = $this->encoded_image;
+		if (preg_match('/^data:image\/(\w+);base64,/', $data, $type)) {
 			$data = substr($data, strpos($data, ',') + 1);
 			$type = strtolower($type[1]); // jpg, png, gif
 
 			if (!in_array($type, [ 'jpg', 'jpeg', 'gif', 'png' ])) {
-				return -1;
+				return false;
 				//throw new \Exception('invalid image type');
 			}
 
 			$data = base64_decode($data);
 
 			if ($data === false) {
-				return -1;
+				return false;
 				//throw new \Exception('base64_decode failed');
 			}
 		} else {
-			return -1;
+			return false;
 			//throw new \Exception('did not match data URI with image data');
 		}
 		$file_name = "pv" . $this->pv_id . "." . $type;
@@ -188,7 +189,7 @@ class Pv {
 		return $array;
 		
 	}
-/*
+
 	public function update($data) {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
@@ -219,7 +220,7 @@ class Pv {
 
 		return false;
     }
-	
+	/*
 		
 	    // Delete pv
     public function delete($pv_id) {
