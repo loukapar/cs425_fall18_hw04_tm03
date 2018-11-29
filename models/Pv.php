@@ -189,7 +189,7 @@ class Pv {
 		$array = array (false, -1);
 		return $array;
 	}
-
+/*
 	public function update($data) {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
@@ -221,7 +221,7 @@ class Pv {
 		return false;
     }
 	
-		/*
+		
 	    // Delete pv
     public function delete($pv_id) {
           // Create query
