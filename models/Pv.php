@@ -142,7 +142,7 @@ class Pv {
 				$new_pv_id = (int)$row2['pv_id'];
 			}
 		}
-		return $new_pv_id;
+		return $num2;
 		//printf("Error: %s.\n", $stmt->error);
 
 		//return $new_pv_id;
