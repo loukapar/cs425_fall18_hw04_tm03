@@ -40,6 +40,8 @@
 
 	// Create pv
 	$result = $pv->create();
+	echo "done";
+	/*
 	if ($result[0] == true) {
 		echo json_encode {
 			array (	'img_response' => 'Image uploaded successfully',
@@ -51,5 +53,6 @@
 					'pv_id' => $result[1])
 		};
 	}
+	*/
 	
 ?>

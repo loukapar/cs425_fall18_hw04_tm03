@@ -29,7 +29,7 @@ class Pv {
 		$this->conn = $db;
     }
 	
-	function IsNullOrEmptyString($str){
+	public function IsNullOrEmptyString($str){
 		return (!isset($str) || trim($str) === '');
 	}
 	
