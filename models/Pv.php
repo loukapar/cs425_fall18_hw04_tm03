@@ -146,7 +146,7 @@ class Pv {
 
 		printf("Error: %s.\n", $stmt->error);
 
-		return $new_pv_id;
+		//return $new_pv_id;
 	}
 	/*
 

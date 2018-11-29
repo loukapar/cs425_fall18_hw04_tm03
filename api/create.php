@@ -39,7 +39,11 @@
 
 	// Create pv
 	$result = $pv->create();
-	if($result >= 0) {
+		echo json_encode(
+			array('pv_id' => $result)
+		);
+	/*
+	if($result > 0) {
 		echo json_encode(
 			array('pv_id' => $result)
 		);
@@ -48,4 +52,5 @@
 			array('pv_id' => -1)
 		);
 	}
+	*/
 
