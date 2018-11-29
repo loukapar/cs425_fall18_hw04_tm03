@@ -2,7 +2,7 @@ function initializeMap() {
     mymap = L.map('mapid').setView([51.505, -0.09], 13);
     mymap.on('click', onMapClick);
 
-    // mymap.on('mousemove', hoverTheMap);
+    // mymap.on('click', hoverTheMap);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -33,8 +33,6 @@ function hoverTheMap(ev) {
 }
 
 function onMarkerClick(ev) {
-    
-    var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
 
     $("#buttonDelete").show();
     $("#buttonAdd").hide();
@@ -42,7 +40,11 @@ function onMarkerClick(ev) {
     $("#buttonEdit").show();
     $("#pv_profile_modal").modal();
 
-    getPVInfo(latlng.getContent());
+    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+    var marker = ev.target;
+    // L.marker([latlng.lat, latlng.lng]).addTo(mymap).bindPopup(latlng.lat + ', ' + latlng.lng).openPopup();
+    console.log("Marker content:"+marker.PVid);
+    // getPVInfo(latlng.getContent());
 
     document.getElementById('buttonDelete').onclick = deleteClick;
     document.getElementById('buttonEdit').onclick = editClick;
@@ -83,8 +85,8 @@ function saveClick() {
 
 }
 
-function postAjax(imageEnc){
-    
+function postAjax(imageEnc) {
+
     var element = {
         pv_name: $("#name").val(),
         pv_power: -1, // $("#system_power").val(),
@@ -104,34 +106,34 @@ function postAjax(imageEnc){
         encoded_image: imageEnc,
         pv_operator: "",
         pv_description: $("#message_text").val()
-        };
+    };
 
-        console.log(JSON.stringify(element));
+    console.log(JSON.stringify(element));
 
-        $.ajax({
-            type: "POST", //rest Type
-            dataType: 'json', //mispelled
-            url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/create.php",
-            async: true,
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(element),
-            success: function (msg) {
-                console.log(msg);
-            }
-        });
+    $.ajax({
+        type: "POST", //rest Type
+        dataType: 'json', //mispelled
+        url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/create.php",
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(element),
+        success: function (msg) {
+            console.log(msg);
+        }
+    });
 }
 
 function addClick() {
 
-    if (document.getElementById("file").files.length > 0){
-    
-    encodeImageFileAsURL(document.getElementById("file"), function(e) {
-        // use result in callback...
-        var imageEnc = e.target.result;
-        postAjax(imageEnc);
+    if (document.getElementById("file").files.length > 0) {
+
+        encodeImageFileAsURL(document.getElementById("file"), function (e) {
+            // use result in callback...
+            var imageEnc = e.target.result;
+            postAjax(imageEnc);
 
         });
-    }else{
+    } else {
         postAjax("");
     }
 
@@ -163,7 +165,7 @@ function getCoordinates() {
         url: 'http://52.26.216.32/cs425_fall18_hw04_tm03/api/read.php',
         dataType: "JSON", // data type expected from server
         success: callback,
-        
+
         // function (data) {
         //     console.log(data);
         //     showCoordinatesToTheMap(data);
@@ -180,20 +182,19 @@ var PVids;
 function callback(response) {
     // console.log("Response: "+response);
     showCoordinatesToTheMap(response);
-
-    PVids = response;
+    // PVids = response;
     // var coordinates = jQuery.parseJSON(data);
     // console.log("CorX"+data[0].pv_coordinate_x);
 }
 
-function getPVInfo(id){
- 
+function getPVInfo(id) {
+
     $.ajax({
         type: 'GET',
         url: 'http://52.26.216.32/cs425_fall18_hw04_tm03/api/read_single.php',
         dataType: "JSON", // data type expected from server
-        data: { 
-            pv_id : id
+        data: {
+            pv_id: id
         },
         success: function (data) {
             console.log("PV content:" + data);
@@ -205,11 +206,16 @@ function getPVInfo(id){
     });
 }
 
-function showCoordinatesToTheMap(data){
+function showCoordinatesToTheMap(data) {
 
-    data.forEach(function(entry) {
-        L.marker([entry.pv_coordinate_x, entry.pv_coordinate_y]).addTo(mymap).on('click', onMarkerClick);;
-        console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ")");
+    data.forEach(function (entry) {
+
+        var marker = L.marker([entry.pv_coordinate_x, entry.pv_coordinate_y],
+            );
+            marker.PVid = entry.pv_id;
+            marker.addTo(mymap).on('click', onMarkerClick);
+
+        console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
     });
 }
 
@@ -219,13 +225,8 @@ function encodeImageFileAsURL(element, onLoadCallback) {
     var file = element.files[0];
     var reader = new FileReader();
     reader.onloadend = onLoadCallback;
-    
-    // function() {
-    //   console.log('RESULT', reader.result)
-    // }
     reader.readAsDataURL(file);
-
-  }
+}
 
 window.onload = initializeMap;
 
