@@ -165,12 +165,14 @@ class Pv {
 
 		$res = -1;
 		if($stmt->execute()) {
+			/*
 			$this->pv_id = $this->conn->lastInsertId();
 			$res = $this->loadImage();
 			if ($res == true)
 				return array (true, pv->pv_id);
 			else 
 				return array (false, pv->pv_id);
+			*/
 		}
 		
 		return array (false, -1);
