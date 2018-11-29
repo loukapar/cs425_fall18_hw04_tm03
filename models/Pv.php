@@ -79,6 +79,18 @@ class Pv {
 		}
     }
 	
+	function getLastInsertedID(){
+		$query = 'SELECT LAST_INSERT_ID();';
+		$stmt = $this->conn->prepare($query);
+		$stmt->execute();
+
+		$num = $stmt->rowCount();
+		if($num > 0) {
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $row['pv_id'];
+		}
+	}
+	
     // Create pv
     public function create() {
 		
@@ -133,20 +145,14 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
-			$query2 = 'SELECT LAST_INSERT_ID();';
-			$stmt2 = $this->conn->prepare($query2);
-			$stmt2->execute();
-			$num2 = $stmt2->rowCount();
-			if($num2 > 0) {
-				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-				$new_pv_id = (int)$row2['pv_id'];
-			}
+			return getLastInsertedID();
 		}
-		return $num2;
+		return -1;
 		//printf("Error: %s.\n", $stmt->error);
 
 		//return $new_pv_id;
 	}
+	
 	/*
 
 		if(isset($result) && !(trim($result) === '') && ($result > 0)) {
