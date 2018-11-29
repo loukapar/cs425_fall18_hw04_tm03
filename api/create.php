@@ -40,7 +40,7 @@
 
 	// Create pv
 	$result = $pv->create();
-	echo "done";
+	echo json_encode("done");
 	/*
 	if ($result[0] == true) {
 		echo json_encode {
