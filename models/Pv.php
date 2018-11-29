@@ -80,7 +80,7 @@ class Pv {
     }
 	
 	function getLastInsertedID(){
-		$query = 'SELECT LAST_INSERT_ID();';
+		$query = 'SELECT MAX(pv_id) FROM PVS;';
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
 
