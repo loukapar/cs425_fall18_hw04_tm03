@@ -136,7 +136,7 @@ class Pv {
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
 		if($stmt->execute()) {
-			return loadImage();
+			return 2
 				
 		}
 		
