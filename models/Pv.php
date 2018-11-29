@@ -132,7 +132,7 @@ class Pv {
 		$stmt->bindParam(':sensor', $this->pv_sensors);
 
 		if($stmt->execute()) {
-			$res = loadImage($this->encoded_image);
+			$res = loadImage();
 			return $res;
 			
 		}
@@ -140,7 +140,7 @@ class Pv {
 		return -1;
 	}
 	
-	function loadImage($encoded_image){
+	function loadImage(){
 		return 2;
 	}
 	
