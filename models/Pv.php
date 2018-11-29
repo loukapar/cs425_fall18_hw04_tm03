@@ -141,7 +141,7 @@ class Pv {
 				$row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 				$new_pv_id = (int)$row2['pv_id'];
 			}
-			return $new_pv_id;
+			return $num2;
 		}
 
 		printf("Error: %s.\n", $stmt->error);
