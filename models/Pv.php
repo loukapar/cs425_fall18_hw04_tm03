@@ -147,7 +147,7 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
-			$query2 = 'SELECT pv_id FROM PVS WHERE id=(SELECT max(pv_id) FROM PVS)';
+			$query2 = 'SELECT max(pv_id) FROM PVS';
 			$stmt2 = $this->conn->prepare($query2);
 			$stmt2->execute();
 
