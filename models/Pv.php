@@ -174,7 +174,7 @@ class Pv {
 			
 			$last_inserted_pv_id = $this->getLastPvId();
 			if ($last_inserted_pv_id > 0){
-				return $last_inserted_pv_id
+				return $last_inserted_pv_id;
 			}
 			//$res = $this->loadImage();
 		}
