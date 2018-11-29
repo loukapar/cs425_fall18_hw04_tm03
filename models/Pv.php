@@ -107,6 +107,8 @@ class Pv {
 	}
 	
 	public function getLastPvId() {
+		return $this->conn->lastInsertId();
+		/*
 		$query = "SELECT LAST_INSERT_ID();";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
@@ -116,6 +118,7 @@ class Pv {
 			return $row['pv_id'];
 		}
 		return -1;
+		*/
 	}
 	
     // Create pv
