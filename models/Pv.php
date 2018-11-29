@@ -135,7 +135,7 @@ class Pv {
 		$this->pv_coordinate_x = htmlspecialchars(strip_tags($this->pv_coordinate_x));
 		$this->pv_coordinate_y = htmlspecialchars(strip_tags($this->pv_coordinate_y));
 		$this->pv_operator = htmlspecialchars(strip_tags($this->pv_operator));
-		$this->pv_date = htmlspecialchars(strip_tags($this->pv_date));
+		//$this->pv_date = htmlspecialchars(strip_tags($this->pv_date));
 		$this->pv_description = htmlspecialchars(strip_tags($this->pv_description));
 		$this->pv_power = htmlspecialchars(strip_tags($this->pv_power));
 		$this->pv_annual_production = htmlspecialchars(strip_tags($this->pv_annual_production));
