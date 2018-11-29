@@ -35,6 +35,7 @@
 	$pv->pv_communication = $data->pv_communication;
 	$pv->pv_inverter = $data->pv_inverter;
 	$pv->pv_sensors = $data->pv_sensors;
+	$pv->encoded_image = $data->encoded_image;
 
 
 	// Create pv

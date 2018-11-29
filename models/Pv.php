@@ -81,14 +81,48 @@ class Pv {
     }
 	
 	public function loadImage(){
-		return 2;
+		if (preg_match('/^data:image\/(\w+);base64,/', $this->encoded_image, $type)) {
+			$data = substr($data, strpos($data, ',') + 1);
+			$type = strtolower($type[1]); // jpg, png, gif
+
+			if (!in_array($type, [ 'jpg', 'jpeg', 'gif', 'png' ])) {
+				return -1;
+				//throw new \Exception('invalid image type');
+			}
+
+			$data = base64_decode($data);
+
+			if ($data === false) {
+				return -1;
+				//throw new \Exception('base64_decode failed');
+			}
+		} else {
+			return -1;
+			//throw new \Exception('did not match data URI with image data');
+		}
+		$file_name = "pv" . $this->pv_id . "." . $type;
+		$file_dir = "../resources/" . $file_name;
+		file_put_contents($file_dir, $data);
+		return $file_name;
+	}
+	
+	public function getLastPvId() {
+		$query = "SELECT LAST_INSERT_ID();";
+		$stmt = $this->conn->prepare($query);
+		$stmt->execute();
+		$num = $stmt->rowCount();
+		if($num > 0) {
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $row['pv_id'];
+		}
+		return false;
 	}
 	
     // Create pv
     public function create() {
 		
 		// Create query
-		$query = 'INSERT INTO ' . $this->table . ' SET pv_name = :name, pv_address = :address, pv_coordinate_x = :coordinate_x, 
+		$query = 'INSERT INTO ' . $this->table . ' SET pv_name = :name, pv_photo = :photo, pv_address = :address, pv_coordinate_x = :coordinate_x, 
 			pv_coordinate_y = :coordinate_y, pv_operator = :operator, pv_date = :date, pv_description = :description, pv_power = :power, 
 			pv_annual_production = :annual_production, pv_co2_avoided = :co2_avoided, pv_reimbursement = :reimbursement, 
 			pv_solar_panel_module = :solar_panel_module, pv_azimuth_angl = :azimuth_angl, pv_inclination_angl = :inclination_angl, 
@@ -114,8 +148,8 @@ class Pv {
 		$this->pv_communication = htmlspecialchars(strip_tags($this->pv_communication));
 		$this->pv_inverter = htmlspecialchars(strip_tags($this->pv_inverter));
 		$this->pv_sensors = htmlspecialchars(strip_tags($this->pv_sensors));
-		  
-
+		
+	
           // Bind data
 		$stmt->bindParam(':name', $this->pv_name);
 		$stmt->bindParam(':address', $this->pv_address);
@@ -137,32 +171,16 @@ class Pv {
 
 		$res = -1;
 		if($stmt->execute()) {
-			$res = $this->loadImage();
+			$last_inserted_pv_id = $this->getLastPvId();
+			if (!($last_inserted_pv_id == false)){
+				return $last_inserted_pv_id
+			}
+			//$res = $this->loadImage();
 		}
 		
 		return $res;
 	}
-	
-
-	
 	/*
-
-		if(isset($result) && !(trim($result) === '') && ($result > 0)) {
-			$new_pv_id;
-			while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				extract($row);
-				$new_pv_id => $pv_id;
-			}
-			return $new_pv_id;
-		}
-
-		// Print error if something goes wrong
-		printf("Error: %s.\n", $stmt->error);
-
-		return -1;
-    }
-	
-	
 	public function update($data) {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
@@ -193,6 +211,7 @@ class Pv {
 
 		return false;
     }
+	
 	
 	    // Delete pv
     public function delete($pv_id) {
