@@ -3,7 +3,6 @@ function initializeMap() {
     mymap.on('click', onMapClick);
 
     // mymap.on('mousemove', hoverTheMap);
-
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -84,13 +83,9 @@ function saveClick() {
 
 }
 
-function addClick() {
-
-    encodeImageFileAsURL(document.getElementById("file"), function(e) {
-        // use result in callback...
-       var imageEnc = e.target.result;
-
-       var element = {
+function postAjax(imageEnc){
+    
+    var element = {
         pv_name: $("#name").val(),
         pv_power: -1, // $("#system_power").val(),
         pv_sensor: $("#sensors").val(),
@@ -124,11 +119,22 @@ function addClick() {
                 console.log(msg);
             }
         });
+}
 
-    });
+function addClick() {
 
+    if (document.getElementById("file").files.length > 0){
+    
+    encodeImageFileAsURL(document.getElementById("file"), function(e) {
+        // use result in callback...
+        var imageEnc = e.target.result;
+        postAjax(imageEnc);
 
-    // postAjax('http://52.26.216.32/cs425_fall18_hw04_tm03/api/create.php', { pv_name: "name1", pv_address: "address1", pv_coordinate_x:"", pv_coordinate_y:"", pv_operator:"", pv_date:"", pv_description:"description", pv_power:"", pv_annual_production:"", pv_co2_avoided:"", pv_reimbursement:"", pv_solar_panel_module:"", pv_azimuth_ang1:"", pv_inclination_angl:"", pv_communication:"", pv_inverter:"", pv_sensor:"" }, function(data){ console.log(data); });
+        });
+    }else{
+        postAjax("");
+    }
+
     $("#myModal").modal('hide');
 }
 
@@ -209,16 +215,16 @@ function showCoordinatesToTheMap(data){
 
 
 function encodeImageFileAsURL(element, onLoadCallback) {
+
     var file = element.files[0];
     var reader = new FileReader();
-    var encoded_image;
     reader.onloadend = onLoadCallback;
     
     // function() {
     //   console.log('RESULT', reader.result)
     // }
     reader.readAsDataURL(file);
-    return reader.onloadend;
+
   }
 
 window.onload = initializeMap;
