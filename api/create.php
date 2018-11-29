@@ -40,5 +40,5 @@
 
 	// Create pv
 	$result = $pv->create();
-	echo json_encode($array);	
+	echo json_encode($result);	
 ?>
