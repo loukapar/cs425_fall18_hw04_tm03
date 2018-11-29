@@ -80,6 +80,10 @@ class Pv {
 		}
     }
 	
+	public function loadImage(){
+		return 2;
+	}
+	
     // Create pv
     public function create() {
 		
@@ -133,16 +137,14 @@ class Pv {
 
 		if($stmt->execute()) {
 			$res = loadImage();
-			return $res;
+			
 			
 		}
 		
 		return -1;
 	}
 	
-	function loadImage(){
-		return 2;
-	}
+
 	
 	/*
 
