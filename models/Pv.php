@@ -166,27 +166,27 @@ class Pv {
 		$stmt->bindParam(':communication', $this->pv_communication);
 		$stmt->bindParam(':inverter', $this->pv_inverter);
 		$stmt->bindParam(':sensor', $this->pv_sensors);
-		if ((IsNullOrEmptyString($this->coordinate_x) == false) || (IsNullOrEmptyString($this->coordinate_y) == false)){
-			if($stmt->execute()) {
-				$this->pv_id = $this->conn->lastInsertId();
-				if ($this->IsNullOrEmptyString($this->encoded_image) == true){
-					$array = array ("img_response" => "", "pv_id" => $this->pv_id);
+		
+		if($stmt->execute()) {
+			$this->pv_id = $this->conn->lastInsertId();
+			if ($this->IsNullOrEmptyString($this->encoded_image) == true){
+				$array = array ("img_response" => "", "pv_id" => $this->pv_id);
+				return $array;
+			} else {
+				$res = $this->loadImage();
+				if ($res == true){
+					$array = array ("img_response" => "Image uploaded successfully!", "pv_id" => $this->pv_id);
 					return $array;
 				} else {
-					$res = $this->loadImage();
-					if ($res == true){
-						$array = array ("img_response" => "Image uploaded successfully!", "pv_id" => $this->pv_id);
-						return $array;
-					} else {
-						$array = array ("img_response" => "Something went wrong with the image. Try upload again in edit section!", "pv_id" => $this->pv_id);
-						return $array;
-					}
+					$array = array ("img_response" => "Something went wrong with the image. Try upload again in edit section!", "pv_id" => $this->pv_id);
+					return $array;
 				}
 			}
-			
-			$array = array ("img_response" => "Something went wrong! Try again", "pv_id" => -1);
-			return $array;
 		}
+			
+		$array = array ("img_response" => "Something went wrong! Try again", "pv_id" => -1);
+		return $array;
+		
 	}
 /*
 	public function update($data) {
