@@ -90,6 +90,7 @@ class Pv {
 			return "hi";
 			//return $row['pv_id'];
 		}
+		return "bye";
 	}
 	
     // Create pv
@@ -146,8 +147,7 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
-			return "hi";
-		//	return getLastInsertedID();
+			return getLastInsertedID();
 		}
 		//return -1;
 		//printf("Error: %s.\n", $stmt->error);
