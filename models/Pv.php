@@ -133,7 +133,7 @@ class Pv {
 		// Execute query
 		$new_pv_id = -1;
 		if($stmt->execute()) {
-			$last_id = $conn->insert_id;
+			$last_id = $conn->lastInsertId();
 			return $last_id;
 			/*
 			$query2 = 'SELECT LAST_INSERT_ID();';
