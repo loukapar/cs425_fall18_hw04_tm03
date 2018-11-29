@@ -29,6 +29,10 @@ class Pv {
 		$this->conn = $db;
     }
 	
+	function IsNullOrEmptyString($str){
+		return (!isset($str) || trim($str) === '');
+	}
+	
 	//get pvs
 	public function read() {
 		$query = 'SELECT pv_id, pv_coordinate_x, pv_coordinate_y FROM ' . $this->table;
@@ -165,14 +169,16 @@ class Pv {
 
 		$res = -1;
 		if($stmt->execute()) {
-			/*
 			$this->pv_id = $this->conn->lastInsertId();
-			$res = $this->loadImage();
-			if ($res == true)
-				return array (true, pv->pv_id);
-			else 
+			if ($this->IsNullOrEmptyString($pv->encoded_image)){
 				return array (false, pv->pv_id);
-			*/
+			} else {
+				$res = $this->loadImage();
+				if ($res == true)
+					return array (true, pv->pv_id);
+				else 
+					return array (false, pv->pv_id);
+			}
 		}
 		
 		return array (false, -1);

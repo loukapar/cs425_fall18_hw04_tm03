@@ -37,7 +37,7 @@
 	$pv->pv_sensors = $data->pv_sensors;
 	$pv->encoded_image = $data->encoded_image;
 
-/*
+
 	// Create pv
 	$result = $pv->create();
 	if ($result[0] == true) {
@@ -51,6 +51,5 @@
 					'pv_id' => $result[1])
 		};
 	}
-	*/
 	
 ?>
