@@ -91,7 +91,7 @@ class Pv {
 
           // Prepare statement
 		$stmt = $this->conn->prepare($query);
-/*
+/**
 		$this->pv_name = htmlspecialchars(strip_tags($this->pv_name)); 
 		$this->pv_address = htmlspecialchars(strip_tags($this->pv_address));
 		$this->pv_coordinate_x = htmlspecialchars(strip_tags($this->pv_coordinate_x));
@@ -109,8 +109,8 @@ class Pv {
 		$this->pv_communication = htmlspecialchars(strip_tags($this->pv_communication));
 		$this->pv_inverter = htmlspecialchars(strip_tags($this->pv_inverter));
 		$this->pv_sensors = htmlspecialchars(strip_tags($this->pv_sensors));
-		  */
-
+		  
+*/
           // Bind data
 		$stmt->bindParam(':name', $this->pv_name);
 		$stmt->bindParam(':address', $this->pv_address);
