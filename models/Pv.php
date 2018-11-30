@@ -192,6 +192,7 @@ class Pv {
 
 	public function update($data) {
 		//create query
+		/*
 		$query = 'UPDATE ' . $this->table . ' SET ';
 		for ($i = 1; $i < sizeof($data); $i++) {
 			//if (($data[$i][0] == "encoded_image") && (IsNullOrEmptyString($data[$i][1] == false))) {
@@ -223,8 +224,8 @@ class Pv {
 
 		// Print error if something goes wrong
 		printf("Error: %s.\n", $stmt->error);
-
-		return false;
+*/
+		return true;
     }
 	
 		/*
