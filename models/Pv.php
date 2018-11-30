@@ -195,10 +195,11 @@ class Pv {
 		
 		$query = 'UPDATE ' . $this->table . ' SET ';
 		for ($i = 1; $i < sizeof($data); $i++) {
-			if (($data[$i][0] == "encoded_image") && (IsNullOrEmptyString($data[$i][1] == false))) {
-				$this->pv_id = $data[0];
-				$this->encoded_image = $data[$i][0];
-				$this->loadImage();
+			if (($data[$i][0] == "encoded_image")) {
+				//&& (IsNullOrEmptyString($data[$i][1] == false))
+				//$this->pv_id = $data[0];
+				//$this->encoded_image = $data[$i][0];
+				//$this->loadImage();
 			} else {
 				if ($i > 1)
 					$query = $query . ', ' . $data[$i][0] . ' = :' . $data[$i][0];
