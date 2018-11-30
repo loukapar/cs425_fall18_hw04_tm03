@@ -236,7 +236,7 @@ class Pv {
 	
 	
 	    // Delete pv
-    public function delete($pv_id) {
+    public function delete() {
           // Create query
           $query = 'DELETE FROM ' . $this->table . ' WHERE pv_id = :pv_id';
 
@@ -244,10 +244,10 @@ class Pv {
           $stmt = $this->conn->prepare($query);
 
           // Clean data
-          $pv_id = htmlspecialchars(strip_tags($pv_id));
+          $this->pv_id = htmlspecialchars(strip_tags($this->pv_id));
 
           // Bind data
-          $stmt->bindParam(':pv_id', $pv_id);
+          $stmt->bindParam(':pv_id', $this->pv_id);
 
           // Execute query
           if($stmt->execute()) {
