@@ -6,7 +6,6 @@
 	header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
 
 	include_once '../config/Database.php';
-	include_once '../models/Category.php';
 	// Instantiate DB & connect
 	$database = new Database();
 	$db = $database->connect();
@@ -14,9 +13,11 @@
 	// Get raw posted data
 	$data = json_decode(file_get_contents("php://input"), true);
 	
+	echo json_encode($data);
 	$pv = new Pv();
-
+	
 	// Update post
+	/*
 	if($pv->update($data)) {
 		echo json_encode(
 			array('message' => 'PV Updated')
@@ -26,4 +27,5 @@
 			array('message' => 'PV not updated')
 		);
 	}
+	*/
 ?>

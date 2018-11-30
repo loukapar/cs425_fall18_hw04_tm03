@@ -28,11 +28,11 @@ class Pv {
 	public function __construct($db) {
 		$this->conn = $db;
     }
-	
+	/*
 	public function IsNullOrEmptyString($str){
 		return (!isset($str) || trim($str) === '');
 	}
-	
+	*/
 	//get pvs
 	public function read() {
 		$query = 'SELECT pv_id, pv_coordinate_x, pv_coordinate_y FROM ' . $this->table;
@@ -83,7 +83,7 @@ class Pv {
 			$this->pv_id = -1;
 		}
     }
-	
+	/*
 	public function loadImage(){
 		$data = $this->encoded_image;
 		if (preg_match('/^data:image\/(\w+);base64,/', $data, $type)) {
@@ -194,10 +194,16 @@ class Pv {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
 		for ($i = 1; $i < sizeof($data); $i++) {
-			if ($i > 1)
-				$query = $query . ', ' . $data[$i][0] . ' = :' . $data[$i][0];
-			else 
-				$query = $query . $data[$i][0] . ' = :' . $data[$i][0];
+			//if (($data[$i][0] == "encoded_image") && (IsNullOrEmptyString($data[$i][1] == false))) {
+			//	$this->pv_id = $data[0];
+			//	$this->encoded_image = $data[$i][0];
+			//	$this->loadImage();
+			//} else {
+				if ($i > 1)
+					$query = $query . ', ' . $data[$i][0] . ' = :' . $data[$i][0];
+				else 
+					$query = $query . $data[$i][0] . ' = :' . $data[$i][0];
+			//}
 		}
 		$query = $query . ' WHERE pv_id = :pv_id'; 
 
@@ -220,7 +226,7 @@ class Pv {
 
 		return false;
     }
-	/*
+	
 		
 	    // Delete pv
     public function delete($pv_id) {
