@@ -11,18 +11,13 @@ function initializeMap() {
         id: 'mapbox.streets'
     }).addTo(mymap);
 
-    // mymap.on('click', onMarkerClick);
-
-
     $('.modal').on('hidden.bs.modal', function (e) {
         if ($('.modal').hasClass('in')) {
             $('body').addClass('modal-open');
         }
     });
 
-    // console.log(latlng.lat + ', ' + latlng.lng);
     getCoordinates();
-
 }
 
 
@@ -40,11 +35,12 @@ function onMarkerClick(ev) {
     $("#buttonEdit").show();
     $("#pv_profile_modal").modal();
 
-    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
     var marker = ev.target;
-    // L.marker([latlng.lat, latlng.lng]).addTo(mymap).bindPopup(latlng.lat + ', ' + latlng.lng).openPopup();
-    console.log("Marker content:"+marker.PVid);
-    // getPVInfo(latlng.getContent());
+    getPVInfo(marker.PVid);
+    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+    // positionX = latlng.lat;
+    // positionY =  latlng.lng;
+    // console.log("Marker content:"+marker.PVid);
 
     document.getElementById('buttonDelete').onclick = deleteClick;
     document.getElementById('buttonEdit').onclick = editClick;
@@ -61,54 +57,31 @@ function editClick() {
 
 }
 
-function postAjax(url, data, success) {
-    var params = typeof data == 'string' ? data : Object.keys(data).map(
-        function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
-    ).join('&');
+function postAjax(imageEnc, posX, posY) {
 
-    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    xhr.open('POST', url);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState > 3 && xhr.status == 200) { success(xhr.responseText); }
-    };
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(params);
-
-    console.log(params);
-
-    return xhr;
-}
-
-
-function saveClick() {
-
-}
-
-function postAjax(imageEnc) {
-
+    var pv_date;
     var element = {
         pv_name: $("#name").val(),
-        pv_power: -1, // $("#system_power").val(),
-        pv_sensor: $("#sensors").val(),
-        pv_annual_production: -1, // $("#annual_production").val(),
-        pv_co2_avoided: -1, //$("#CO2_avoided").val(),
-        pv_reimbursement: -1, // $("#reimbursement").val(),
+        pv_power: $("#system_power").val(),
+        pv_sensors: $("#sensors").val(),
+        pv_annual_production: $("#annual_production").val(),
+        pv_co2_avoided: $("#CO2_avoided").val(),
+        pv_reimbursement: $("#reimbursement").val(),
         pv_solar_panel_module: $("#solar_panel_modules").val(),
         pv_azimuth_ang1: $("#azimuth_angle").val(),
         pv_inclination_angl: $("#inclination_angle").val(),
         pv_communication: $("#communication").val(),
-        // pv_date :  null, //$("#commission_date").val(),
+        pv_date :  $("#commission_date").val(),
         pv_inverter: $("#inverter").val(),
-        pv_address: "",
-        pv_coordinate_x: 10,
-        pv_coordinate_y: 20,
+        pv_address: $("#address").val(),
+        pv_coordinate_x: posX,
+        pv_coordinate_y: posY,
         encoded_image: imageEnc,
-        pv_operator: "",
+        pv_operator: $("#operator").val(),
         pv_description: $("#message_text").val()
     };
 
-    console.log(JSON.stringify(element));
+    // console.log("Date:" + $("#name").val());
 
     $.ajax({
         type: "POST", //rest Type
@@ -125,16 +98,17 @@ function postAjax(imageEnc) {
 
 function addClick() {
 
+    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
     if (document.getElementById("file").files.length > 0) {
 
         encodeImageFileAsURL(document.getElementById("file"), function (e) {
             // use result in callback...
             var imageEnc = e.target.result;
-            postAjax(imageEnc);
-
+         
+            postAjax(imageEnc, addClick.posX, addClick.posY);
         });
     } else {
-        postAjax("");
+        postAjax("", addClick.posX, addClick.posY);
     }
 
     $("#myModal").modal('hide');
@@ -148,16 +122,14 @@ function onMapClick(ev) {
     $("#buttonEdit").hide();
     $("#myModal").modal();
 
-    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-    // coordx = latlng.lat;
-    // coordy = latlng.lng;
-
+    var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+    addClick.posX = latlng.lat;
+    addClick.posY = latlng.lng;
     document.getElementById('buttonAdd').onclick = addClick;
 }
 
 
 function getCoordinates() {
-    // console.log("data");
 
     $.ajax({
         type: 'GET',
@@ -165,26 +137,14 @@ function getCoordinates() {
         url: 'http://52.26.216.32/cs425_fall18_hw04_tm03/api/read.php',
         dataType: "JSON", // data type expected from server
         success: callback,
-
-        // function (data) {
-        //     console.log(data);
-        //     showCoordinatesToTheMap(data);
-        //     // var coordinates = jQuery.parseJSON(data);
-        //     // console.log("CorX"+data[0].pv_coordinate_x);
-        // },
         error: function () {
             console.log('Error: ' + data);
         }
     });
 }
 
-var PVids;
 function callback(response) {
-    // console.log("Response: "+response);
     showCoordinatesToTheMap(response);
-    // PVids = response;
-    // var coordinates = jQuery.parseJSON(data);
-    // console.log("CorX"+data[0].pv_coordinate_x);
 }
 
 function getPVInfo(id) {
@@ -196,27 +156,30 @@ function getPVInfo(id) {
         data: {
             pv_id: id
         },
-        success: function (data) {
-            console.log("PV content:" + data);
+        success: function (element) { //JSON.stringify(element)
+            // console.log("PV content:" + JSON.stringify(msg));
+            parseDataToForm(element);
 
         },
-        error: function () {
-            console.log('Error: ' + data);
+        error: function (msg) {
+            console.log('Error: ' + msg);
         }
     });
 }
 
 function showCoordinatesToTheMap(data) {
 
-    data.forEach(function (entry) {
+    if (data != null ){
+        data.forEach(function (entry) {
 
-        var marker = L.marker([entry.pv_coordinate_x, entry.pv_coordinate_y],
-            );
-            marker.PVid = entry.pv_id;
-            marker.addTo(mymap).on('click', onMarkerClick);
+            var marker = L.marker([entry.pv_coordinate_x, entry.pv_coordinate_y],
+                );
+                marker.PVid = entry.pv_id;
+                marker.addTo(mymap).on('click', onMarkerClick);
 
-        console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
-    });
+            // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
+        });
+    }
 }
 
 
@@ -226,6 +189,28 @@ function encodeImageFileAsURL(element, onLoadCallback) {
     var reader = new FileReader();
     reader.onloadend = onLoadCallback;
     reader.readAsDataURL(file);
+}
+
+
+function parseDataToForm(element){
+
+    $("#modal_name").text(element.pv_name);
+    $("#modal_systemPower").text(element.pv_power);
+    $("#modal_sensors").text(element.pv_sensors);
+    $("#modal_annualPr").text(element.pv_annual_production);
+    $("#modal_COavoided").text(element.pv_co2_avoided);
+    $("#modal_reimbursement").text(element.pv_reimbursement);
+    $("#modal_solarPanelModules").text(element.pv_solar_panel_module);
+    $("#modal_azimuthAngle").text(element.pv_azimuth_ang1);
+    $("#modal_inclinationAngle").text(element.pv_inclination_angl);
+    $("#modal_communication").text(element.pv_communication);
+    $("#modal_date").text(element.pv_date);
+    $("#modal_inverter").text(element.pv_inverter);
+    $("#modal_description").text(element.pv_description);
+    $("#modal_corX").text(element.pv_coordinate_x);
+    $("#modal_corY").text(element.pv_coordinate_y);
+    $("#modal_address").text(element.pv_address);
+    $("#modal_operator").text(element.pv_operator);
 }
 
 window.onload = initializeMap;
