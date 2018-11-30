@@ -83,7 +83,7 @@ class Pv {
 			$this->pv_id = -1;
 		}
     }
-	/*
+	
 	public function loadImage(){
 		$data = $this->encoded_image;
 		if (preg_match('/^data:image\/(\w+);base64,/', $data, $type)) {
@@ -227,7 +227,7 @@ class Pv {
 		return false;
     }
 	
-		
+		/*
 	    // Delete pv
     public function delete($pv_id) {
           // Create query

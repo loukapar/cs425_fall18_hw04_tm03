@@ -13,12 +13,11 @@
 	// Get raw posted data
 	$data = json_decode(file_get_contents("php://input"));
 	
-	$pv = new Pv();
+	$pv = new Pv($db);
 	echo json_encode($data);
 	
 	
 	// Update post
-	/*
 	if($pv->update($data)) {
 		echo json_encode(
 			array('message' => 'PV Updated')
@@ -28,5 +27,4 @@
 			array('message' => 'PV not updated')
 		);
 	}
-	*/
 ?>
