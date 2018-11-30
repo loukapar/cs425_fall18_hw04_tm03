@@ -207,7 +207,7 @@ class Pv {
 			//}
 		}
 		$query = $query . ' WHERE pv_id = :pv_id'; 
-/*
+
 		// Prepare statement
 		$stmt = $this->conn->prepare($query);
 
@@ -224,7 +224,7 @@ class Pv {
 
 		// Print error if something goes wrong
 		printf("Error: %s.\n", $stmt->error);
-*/
+
 		return true;
     }
 	
