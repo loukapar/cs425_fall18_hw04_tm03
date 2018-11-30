@@ -35,18 +35,33 @@ function onMarkerClick(ev) {
     $("#buttonEdit").show();
     $("#pv_profile_modal").modal();
 
+
     var marker = ev.target;
     getPVInfo(marker.PVid);
-    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-    // positionX = latlng.lat;
-    // positionY =  latlng.lng;
-    // console.log("Marker content:"+marker.PVid);
-
+    saveClick.PVid = marker.PVid; 
     document.getElementById('buttonDelete').onclick = deleteClick;
     document.getElementById('buttonEdit').onclick = editClick;
+    document.getElementById('buttonSave').onclick = saveClick;
 }
 
 function deleteClick() {
+
+}
+
+function saveClick(){
+
+    if (document.getElementById("file").files.length > 0) {
+
+        encodeImageFileAsURL(document.getElementById("file"), function (e) {
+            // use result in callback...
+            var imageEnc = e.target.result;
+            putAjax(imageEnc, saveClick.PVid)
+        });
+    } else {
+        putAjax("", saveClick.PVid);
+    }
+
+    $("#myModal").modal('hide');
 
 }
 
@@ -55,11 +70,62 @@ function editClick() {
     $("#pv_profile_modal").modal('hide');
     $("#buttonSave").show();
 
+    $("#name").val($("#modal_name").text());
+    $("#system_power").val( $("#modal_systemPower").text());
+    $("#sensors").val($("#modal_sensors").text());
+    $("#annual_production").val($("#modal_annualPr").text());
+    $("#CO2_avoided").val($("#modal_COavoided").text());
+    $("#reimbursement").val( $("#modal_reimbursement").text());
+    $("#solar_panel_modules").val($("#modal_solarPanelModules").text());
+    $("#azimuth_angle").val($("#modal_azimuthAngle").text());
+    $("#inclination_angle").val( $("#modal_inclinationAngle").text());
+    $("#communication").val($("#modal_communication").text());
+    $("#commission_date").val($("#modal_date").text());
+    $("#inverter").val($("#modal_inverter").text());
+    $("#address").val( $("#modal_address").text());
+    $("#operator").val($("#modal_operator").text());
+    $("#message_text").val($("#modal_description").text());
 }
+
+function putAjax(imageEnc, pv_id) {
+
+    var element = [
+        pv_id, 
+        ["pv_name", $("#name").val()],
+        ["pv_power", $("#system_power").val()],
+        ["pv_sensors", $("#sensors").val()],
+        ["pv_annual_production", $("#annual_production").val()],
+        ["pv_co2_avoided", $("#CO2_avoided").val()],
+        ["pv_reimbursement", $("#reimbursement").val()],
+        ["pv_solar_panel_module", $("#solar_panel_modules").val()],
+        ["pv_azimuth_angl", $("#azimuth_angle").val()],
+        ["pv_inclination_angl", $("#inclination_angle").val()],
+        ["pv_communication", $("#communication").val()],
+        ["pv_date", $("#commission_date").val()],
+        ["pv_inverter", $("#inverter").val()],
+        ["pv_address", $("#address").val()],
+        ["encoded_image", imageEnc],
+        ["pv_operator", $("#operator").val()],
+        ["pv_description", $("#message_text").val()],
+    ];
+
+    $.ajax({
+        type: "PUT", //rest Type
+        dataType: 'json', //mispelled
+        url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/update.php",
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(element),
+        success: function (msg) {
+            // addPointToMap(posX, posY, msg.pv_id);
+            console.log(msg);
+        }
+    });
+}
+
 
 function postAjax(imageEnc, posX, posY) {
 
-    var pv_date;
     var element = {
         pv_name: $("#name").val(),
         pv_power: $("#system_power").val(),
@@ -68,7 +134,7 @@ function postAjax(imageEnc, posX, posY) {
         pv_co2_avoided: $("#CO2_avoided").val(),
         pv_reimbursement: $("#reimbursement").val(),
         pv_solar_panel_module: $("#solar_panel_modules").val(),
-        pv_azimuth_ang1: $("#azimuth_angle").val(),
+        pv_azimuth_angl: $("#azimuth_angle").val(),
         pv_inclination_angl: $("#inclination_angle").val(),
         pv_communication: $("#communication").val(),
         pv_date :  $("#commission_date").val(),
@@ -81,8 +147,6 @@ function postAjax(imageEnc, posX, posY) {
         pv_description: $("#message_text").val()
     };
 
-    // console.log("Date:" + $("#name").val());
-
     $.ajax({
         type: "POST", //rest Type
         dataType: 'json', //mispelled
@@ -91,14 +155,34 @@ function postAjax(imageEnc, posX, posY) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(element),
         success: function (msg) {
+            addPointToMap(posX, posY, msg.pv_id);
             console.log(msg);
         }
     });
 }
 
+function clearAddForm(){
+    
+    $("#picture").attr("src","img/no-image-available.png");
+    $("#name").val("");
+    $("#system_power").val("");
+    $("#sensors").val("");
+    $("#annual_production").val("");
+    $("#CO2_avoided").val("");
+    $("#reimbursement").val("");
+    $("#solar_panel_modules").val("");
+    $("#azimuth_angle").val("");
+    $("#inclination_angle").val("");
+    $("#communication").val("");
+    $("#commission_date").val("");
+    $("#inverter").val("");
+    $("#address").val("");
+    $("#operator").val("");
+    $("#message_text").val("");
+}
+
 function addClick() {
 
-    // var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
     if (document.getElementById("file").files.length > 0) {
 
         encodeImageFileAsURL(document.getElementById("file"), function (e) {
@@ -116,6 +200,7 @@ function addClick() {
 
 function onMapClick(ev) {
 
+    clearAddForm();
     $("#buttonDelete").hide();
     $("#buttonAdd").show();
     $("#buttonSave").hide();
@@ -171,17 +256,17 @@ function showCoordinatesToTheMap(data) {
 
     if (data != null ){
         data.forEach(function (entry) {
-
-            var marker = L.marker([entry.pv_coordinate_x, entry.pv_coordinate_y],
-                );
-                marker.PVid = entry.pv_id;
-                marker.addTo(mymap).on('click', onMarkerClick);
-
+            addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
             // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
         });
     }
 }
 
+function addPointToMap(posX, posY, id){
+    var marker = L.marker([posX, posY]);
+    marker.PVid = id;
+    marker.addTo(mymap).on('click', onMarkerClick);
+}
 
 function encodeImageFileAsURL(element, onLoadCallback) {
 
@@ -194,6 +279,8 @@ function encodeImageFileAsURL(element, onLoadCallback) {
 
 function parseDataToForm(element){
 
+    if (element.pv_photo.length > 0) $("#picture").attr("src","http://52.26.216.32/cs425_fall18_hw04_tm03/resources/" + element.pv_photo);
+    else $("#picture").attr("src","img/no-image-available.png");
     $("#modal_name").text(element.pv_name);
     $("#modal_systemPower").text(element.pv_power);
     $("#modal_sensors").text(element.pv_sensors);
@@ -201,7 +288,7 @@ function parseDataToForm(element){
     $("#modal_COavoided").text(element.pv_co2_avoided);
     $("#modal_reimbursement").text(element.pv_reimbursement);
     $("#modal_solarPanelModules").text(element.pv_solar_panel_module);
-    $("#modal_azimuthAngle").text(element.pv_azimuth_ang1);
+    $("#modal_azimuthAngle").text(element.pv_azimuth_angl);
     $("#modal_inclinationAngle").text(element.pv_inclination_angl);
     $("#modal_communication").text(element.pv_communication);
     $("#modal_date").text(element.pv_date);
@@ -212,6 +299,7 @@ function parseDataToForm(element){
     $("#modal_address").text(element.pv_address);
     $("#modal_operator").text(element.pv_operator);
 }
+
 
 window.onload = initializeMap;
 
