@@ -227,7 +227,7 @@ class Pv {
 		return false;
     }
 	
-		
+		/*
 	    // Delete pv
     public function delete($pv_id) {
           // Create query
