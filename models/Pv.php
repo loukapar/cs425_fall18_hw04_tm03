@@ -215,8 +215,12 @@ class Pv {
 		
 		$stmt->bindParam(':pv_id', $data[0]);
 		for ($i = 1; $i < sizeof($data); $i++) {
-			$keyvalue = ':' . $data[$i][0];
-			$stmt->bindParam($keyvalue, htmlspecialchars(strip_tags($data[$i][1])));
+			if (($data[$i][0] == "encoded_image")) {
+			
+			} else {
+				$keyvalue = ':' . $data[$i][0];
+				$stmt->bindParam($keyvalue, htmlspecialchars(strip_tags($data[$i][1])));
+			}
 		}
 		
 		// Execute query
