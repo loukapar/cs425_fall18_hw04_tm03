@@ -17,7 +17,7 @@
 	
 	$pv = new Pv($db);
 	echo json_encode($data);
-	/*
+	
 	// Update post
 	if($pv->update($data)) {
 		echo json_encode(
@@ -28,5 +28,5 @@
 			array('message' => 'PV not updated')
 		);
 	}
-	*/
+	
 ?>
