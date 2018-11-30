@@ -14,7 +14,7 @@
 	$data = json_decode(file_get_contents("php://input"), true);
 	
 	print_r ($data);
-	$pv = new Pv();
+	//$pv = new Pv();
 	
 	// Update post
 	/*
