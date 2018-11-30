@@ -234,7 +234,7 @@ class Pv {
 		return true;
     }
 	
-		/*
+	
 	    // Delete pv
     public function delete($pv_id) {
           // Create query
@@ -255,10 +255,9 @@ class Pv {
           }
 
           // Print error if something goes wrong
-          printf("Error: %s.\n", $stmt->error);
+          //printf("Error: %s.\n", $stmt->error);
 
           return false;
     }
-	*/
 }
 ?>

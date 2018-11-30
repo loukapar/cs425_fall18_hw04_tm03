@@ -19,10 +19,11 @@
 	// Delete post
 	if($pv->delete($data->pv_id)) {
 		echo json_encode(
-		array('message' => 'Category deleted')
+		array('message' => 'PV deleted')
 		);
 	} else {
 		echo json_encode(
-		array('message' => 'Category not deleted')
+		array('message' => 'PV deleted')
 		);
 	}
+?>
