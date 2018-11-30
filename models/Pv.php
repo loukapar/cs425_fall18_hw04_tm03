@@ -207,10 +207,11 @@ class Pv {
 			//}
 		}
 		$query = $query . ' WHERE pv_id = :pv_id'; 
-
+		
 		// Prepare statement
 		$stmt = $this->conn->prepare($query);
-/*
+		return $query;
+		/*
 		$stmt->bindParam(':pv_id', $data[0]);
 		for ($i = 1; $i < sizeof($data); $i++) {
 			$keyvalue = ':' . $data[$i][0];
@@ -225,7 +226,7 @@ class Pv {
 		// Print error if something goes wrong
 		printf("Error: %s.\n", $stmt->error);
 */
-		return true;
+		//return true;
     }
 	
 		/*
