@@ -13,7 +13,7 @@
 	// Get raw posted data
 	$data = json_decode(file_get_contents("php://input"), true);
 	
-	print_r ($data);
+	echo ($data);
 	//$pv = new Pv();
 	
 	// Update post
