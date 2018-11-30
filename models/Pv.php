@@ -197,7 +197,6 @@ class Pv {
 		for ($i = 1; $i < sizeof($data); $i++) {
 			if ($data[$i][0] == "encoded_image") {
 				if ($this->IsNullOrEmptyString($data[$i][1]) == false) {
-					return "shistus";
 					$this->pv_id = $data[0];
 					$this->encoded_image = $data[$i][1];
 					$this->loadImage();
