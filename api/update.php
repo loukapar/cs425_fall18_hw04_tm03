@@ -13,8 +13,9 @@
 	// Get raw posted data
 	$data = json_decode(file_get_contents("php://input"));
 	
+	$pv = new Pv();
 	echo json_encode($data);
-	//$pv = new Pv();
+	
 	
 	// Update post
 	/*
