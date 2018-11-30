@@ -28,11 +28,11 @@ class Pv {
 	public function __construct($db) {
 		$this->conn = $db;
     }
-	/*
+	
 	public function IsNullOrEmptyString($str){
 		return (!isset($str) || trim($str) === '');
 	}
-	*/
+	
 	//get pvs
 	public function read() {
 		$query = 'SELECT pv_id, pv_coordinate_x, pv_coordinate_y FROM ' . $this->table;
@@ -227,7 +227,7 @@ class Pv {
 		return false;
     }
 	
-		/*
+		
 	    // Delete pv
     public function delete($pv_id) {
           // Create query
