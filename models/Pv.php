@@ -192,7 +192,7 @@ class Pv {
 
 	public function update($data) {
 		//create query
-		/*
+		
 		$query = 'UPDATE ' . $this->table . ' SET ';
 		for ($i = 1; $i < sizeof($data); $i++) {
 			//if (($data[$i][0] == "encoded_image") && (IsNullOrEmptyString($data[$i][1] == false))) {
@@ -207,7 +207,7 @@ class Pv {
 			//}
 		}
 		$query = $query . ' WHERE pv_id = :pv_id'; 
-
+/*
 		// Prepare statement
 		$stmt = $this->conn->prepare($query);
 
