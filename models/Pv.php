@@ -83,7 +83,7 @@ class Pv {
 			$this->pv_id = -1;
 		}
     }
-	
+	/*
 	public function loadImage(){
 		$data = $this->encoded_image;
 		if (preg_match('/^data:image\/(\w+);base64,/', $data, $type)) {
@@ -189,7 +189,7 @@ class Pv {
 		return $array;
 		
 	}
-/*
+
 	public function update($data) {
 		//create query
 		$query = 'UPDATE ' . $this->table . ' SET ';
