@@ -17,11 +17,13 @@
 	// Instantiate DB & connect
 	$database = new Database();	
 	$db = $database->connect();
+					echo json_encode(
+					array('message' => 'hi')
+				);	
+	/*
 	if ($_SESSION["times"] < 3) {
-				echo json_encode(
-					array('message' => 'less than 3')
-				);		
-		/*
+	
+		
 		$data = json_decode(file_get_contents("php://input"));
 		
 		$username = htmlspecialchars(strip_tags($data->password)); 
@@ -46,13 +48,13 @@
 				array('message' => 'Something went wrong. Try again!')
 			);
 		}
-		*/
+		
 	} else {
 		echo json_encode(
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
 		);
 	}
-	
+	*/
 	
 	public function validateUser($username, $password, $conn) {
 		/*
