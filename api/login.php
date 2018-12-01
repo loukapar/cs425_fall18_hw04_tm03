@@ -10,17 +10,21 @@
 	
 	include_once '../config/Database.php';
 	
-	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false'))
+	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
+										echo json_encode(
+					array('message' => "hi")
+				);	
+		
+	}
+		
 	
 	
 	// Instantiate DB & connect
 	$database = new Database();	
 	$db = $database->connect();
 
-								echo json_encode(
-					array('message' => $_SESSION['times'])
-				);	
+
 	if ($_SESSION['times'] < 3) {
 		$_SESSION['times'] += 1;
 		$data = json_decode(file_get_contents("php://input"));
