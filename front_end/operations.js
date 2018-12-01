@@ -206,6 +206,8 @@ function postAjax(imageEnc, posX, posY) {
         pv_description: $("#message_text").val()
     };
 
+    console.log(JSON.stringify(element));
+
     $.ajax({
         type: "POST", //rest Type
         dataType: 'json', //mispelled
@@ -316,12 +318,20 @@ function getPVInfo(id) {
 
 function showCoordinatesToTheMap(data) {
 
-    if (data != null ){
-        data.forEach(function (entry) {
-            if (entry) addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
-            // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
-        });
+    try{
+        for(var k in data) {
+            addPointToMap(data[k].pv_coordinate_x, data[k].pv_coordinate_y,  data[k].pv_id);
+         }
+    }catch(err){
+
     }
+
+    // if (data != null ){
+    //     data.forEach(function (entry) {
+    //         if (entry) addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
+    //         // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
+    //     });
+    // }
 }
 
 function addPointToMap(posX, posY, id){
