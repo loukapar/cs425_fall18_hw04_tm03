@@ -10,7 +10,7 @@
 	
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false'))
 		$_SESSION["times"] = 0;
-	
+	/*
 	
 	// Instantiate DB & connect
 	$database = new Database();	
@@ -51,6 +51,7 @@
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
 		);
 	}
+	
 	public function validateUser($username, $password) {
 		$dbstoredpassword = null;
 		$query = 'SELECT password FROM ' . $this->table . ' WHERE username = ?';
@@ -70,4 +71,5 @@
 			return false;
 		}
 	}
+	*/
 ?>
