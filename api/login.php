@@ -22,6 +22,9 @@
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		$bcryptpassword;
 		if (!empty($username) && !empty($password)) {
+						echo json_encode(
+				array('message' => 'hi!')
+			);
 			header('Location: ../front_end/map.html');
 			/*
 			if (validateUser($username, $password)) {
