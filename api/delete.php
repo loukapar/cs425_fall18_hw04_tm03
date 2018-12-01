@@ -15,10 +15,8 @@
 	
 	// Get raw posted data
 	$data = json_decode(file_get_contents("php://input"));
-	//$pv->pv_id = $data->pv_id;
+	$pv->pv_id = $data->pv_id;
 	// Delete post
-	echo json_encode("arxidia: " . $data);
-	/*
 	if($pv->delete()) {
 		echo json_encode(
 		array('message' => 'PV deleted')
@@ -28,5 +26,4 @@
 		array('message' => 'PV deleted')
 		);
 	}
-	*/
 ?>
