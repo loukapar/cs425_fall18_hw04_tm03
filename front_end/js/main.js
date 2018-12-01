@@ -105,3 +105,9 @@ function postAjax(username, password) {
 function signup(){
     
 }
+
+// to not sumbit form
+
+$("#prospects_form").submit(function(e) {
+    e.preventDefault();
+});
