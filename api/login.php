@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	//session_start();
 	header('Access-Control-Allow-Origin: *');
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Methods: POST');
@@ -56,7 +56,7 @@
 	}
 	*/
 	
-	public function validateUser($username, $password, $conn) {
+	//public function validateUser($username, $password, $conn) {
 		/*
 		$dbstoredpassword = null;
 		$query = 'SELECT password FROM USER WHERE username = ?';
@@ -76,7 +76,7 @@
 			return false;
 		}
 		*/
-		return true;
-	}
+	//	return true;
+	//}
 
 ?>
