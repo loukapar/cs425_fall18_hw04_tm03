@@ -10,8 +10,8 @@
 	
 	include_once '../config/Database.php';
 	
-	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false'))
-		$_SESSION["times"] = 0;
+	//if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false'))
+	//	$_SESSION["times"] = 0;
 	
 	
 	// Instantiate DB & connect
