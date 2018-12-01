@@ -29,7 +29,7 @@
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
-		
+				$_SESSION["authenticated"] = false;
 							echo json_encode(
 					array('message' => $_SESSION['times'])
 				);	
