@@ -72,7 +72,7 @@
 
 $(document).ready(function() {
     document.getElementById('login').onclick = login;
-    document.getElementById('signup').onclick = signup;
+    // document.getElementById('signup').onclick = signup;
 });
 
 function login(){
@@ -106,9 +106,6 @@ function postAjax(username, password) {
     });
 }
 
-function signup(){
-    
-}
 
 // to not sumbit form
 
