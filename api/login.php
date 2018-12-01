@@ -30,7 +30,15 @@
 					array('message' => $data)
 				);	
 				
+		} else {
+						echo json_encode(
+				array('message' => 'Something went wrong. Try again!')
+			);
 		}
+	} else {
+				echo json_encode(
+			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
+		);
 	}
 	
 		/*
@@ -52,15 +60,11 @@
 		else {
 			$_SESSION["authenticated"] = 'false';
 			$_SESSION["times"] = $_SESSION["times"] + 1;
-			echo json_encode(
-				array('message' => 'Something went wrong. Try again!')
-			);
+
 		}
 		
 	} else {
-		echo json_encode(
-			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
-		);
+
 	}
 	*/
 	
