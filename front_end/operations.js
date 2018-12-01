@@ -2,7 +2,6 @@ function initializeMap() {
     mymap = L.map('mapid').setView([51.505, -0.09], 13);
     mymap.on('click', onMapClick);
 
-    // mymap.on('click', hoverTheMap);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -22,10 +21,10 @@ function initializeMap() {
 
 
 
-function hoverTheMap(ev) {
-    var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-    L.marker([latlng.lat, latlng.lng]).addTo(mymap).bindPopup(latlng.lat + ', ' + latlng.lng).openPopup();
-}
+// function hoverTheMap(ev) {
+//     var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
+//     L.marker([latlng.lat, latlng.lng]).addTo(mymap).bindPopup(latlng.lat + ', ' + latlng.lng).openPopup();
+// }
 
 function onMarkerClick(ev) {
 
@@ -93,14 +92,15 @@ function editClick() {
 
 function deleteAjax(pv_id, layer) {
 
+    var element = {
+        pv_id: pv_id
+    }
     $.ajax({
         type: "DELETE", //rest Type
         dataType: 'json', //mispelled
         url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/delete.php",
         // dataType: "JSON", // data type expected from server
-        data: {
-            pv_id: pv_id
-        },
+        data: JSON.stringify(element),
         async: true,
         contentType: "application/json; charset=utf-8",
         success: function (msg) {
@@ -280,7 +280,7 @@ function showCoordinatesToTheMap(data) {
 
     if (data != null ){
         data.forEach(function (entry) {
-            addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
+            if (entry.pv_name.length > 0) addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
             // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
         });
     }
