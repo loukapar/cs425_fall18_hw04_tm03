@@ -243,9 +243,6 @@ class Pv {
           // Prepare statement
           $stmt = $this->conn->prepare($query);
 
-          // Clean data
-          $this->pv_id = htmlspecialchars(strip_tags($this->pv_id));
-
           // Bind data
           $stmt->bindParam(':pv_id', $this->pv_id);
 
