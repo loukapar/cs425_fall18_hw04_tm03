@@ -9,7 +9,7 @@
   $database = new Database();
   $db = $database->connect();
   
-  require_once('authenticate.php');
+  require_once('authentication.php');
 
   // Instantiate pv object
   $pv = new Pv($db);
