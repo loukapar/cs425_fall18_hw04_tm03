@@ -8,6 +8,8 @@
 	$username = null;
 	$password = null;
 	
+	include_once '../config/Database.php';
+	
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false'))
 		$_SESSION["times"] = 0;
 	/*
@@ -37,7 +39,7 @@
 					array('message' => 'Something went wrong. Try again!')
 				);
 			}
-			*/
+			
 		} 
 		else {
 			$_SESSION["authenticated"] = 'false';
