@@ -47,7 +47,8 @@
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
 		);
 	}
-	/*
+	
+	
 	public function validateUser($username, $password) {
 		$dbstoredpassword = null;
 		$query = 'SELECT password FROM ' . $this->table . ' WHERE username = ?';
@@ -67,5 +68,5 @@
 			return false;
 		}
 	}
-	*/
+
 ?>
