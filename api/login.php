@@ -44,6 +44,7 @@
 				echo json_encode(
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
 		);
+		$_SESSION['times'] = 0;
 	}
 	
 		/*
