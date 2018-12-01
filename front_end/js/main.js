@@ -98,6 +98,10 @@ function postAjax(username, password) {
         success: function (msg) {
             console.log(msg);
             swal("Good job!", "Login Success!", "success");
+        },
+        error: function (msg) {
+            console.log('Error: ' + msg);
+            swal("Oops..", "Something went wrong!!", "error");
         }
     });
 }

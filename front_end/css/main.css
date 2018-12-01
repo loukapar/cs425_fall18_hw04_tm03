@@ -620,12 +620,12 @@ input.input100 {
 }
 
 #signup{
-  color: #3b5998;
+  color: #09328adc;
   font-size: medium;
+  margin: 5%;
 
 }
 
 #signup:hover{
   color: #141f35;
-  text-decoration: underline;
 }
