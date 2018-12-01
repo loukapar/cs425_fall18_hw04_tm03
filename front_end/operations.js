@@ -1,5 +1,5 @@
 function initializeMap() {
-    mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    mymap = L.map('mapid').setView([34.982752818692, 33.137512207031], 10);
     mymap.on('click', onMapClick);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -17,14 +17,38 @@ function initializeMap() {
     });
 
     getCoordinates();
+    document.getElementById('buttonCloseAdd').onclick = closeClickAdd;
+    document.getElementById('buttonCloseProfile').onclick = closeClickProfile;
 }
 
+function closeClickAdd(){
+    clearAddForm();
+}
 
+function closeClickProfile(){
+    clearViewProfileForm();
+}
 
-// function hoverTheMap(ev) {
-//     var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
-//     L.marker([latlng.lat, latlng.lng]).addTo(mymap).bindPopup(latlng.lat + ', ' + latlng.lng).openPopup();
-// }
+function clearViewProfileForm(){
+    $("#picture").attr("src","img/no-image-available.png");
+    $("#modal_name").val("");
+    $("#modal_systemPower").val("");
+    $("#modal_sensors").val("");
+    $("#modal_annualPr").val("");
+    $("#modal_COavoided").val("");
+    $("#modal_reimbursement").val("");
+    $("#modal_solarPanelModules").val("");
+    $("#modal_azimuthAngle").val("");
+    $("#modal_inclinationAngle").val("");
+    $("#modal_communication").val("");
+    $("#modal_date").val("");
+    $("#modal_inverter").val("");
+    $("#modal_address").val("");
+    $("#modal_operator").val("");
+    $("#modal_description").val("");
+    $("#modal_corX").val("");
+    $("#modal_corY").val("");
+}
 
 function onMarkerClick(ev) {
 
@@ -106,6 +130,11 @@ function deleteAjax(pv_id, layer) {
         success: function (msg) {
             console.log(msg);
             mymap.removeLayer(layer); // remove
+            swal("Good job!", "Delete Success!", "success");
+        },
+        error: function (err) {
+            console.log('Error: ' + err);
+            swal("Oops..", "Something went wrong!!", "error");
         }
     });
   
@@ -127,11 +156,12 @@ function putAjax(imageEnc, pv_id) {
         ["pv_communication", $("#communication").val()],
         ["pv_date", $("#commission_date").val()],
         ["pv_inverter", $("#inverter").val()],
-        ["pv_address", $("#address").val()],
+        ["pv_address", $("#address").val()], 
         ["encoded_image", imageEnc],
         ["pv_operator", $("#operator").val()],
         ["pv_description", $("#message_text").val()],
     ];
+    console.log(JSON.stringify(element));
 
     $.ajax({
         type: "PUT", //rest Type
@@ -143,6 +173,11 @@ function putAjax(imageEnc, pv_id) {
         success: function (msg) {
             // addPointToMap(posX, posY, msg.pv_id);
             console.log(msg);
+            swal("Good job!", "Change Success!", "success");
+        },
+        error: function (msg) {
+            console.log('Error: ' + msg);
+            swal("Oops..", "Something went wrong!!", "error");
         }
     });
 }
@@ -181,6 +216,7 @@ function postAjax(imageEnc, posX, posY) {
         success: function (msg) {
             addPointToMap(posX, posY, msg.pv_id);
             console.log(msg);
+            swal("Good job!", "Added Success!", "success");
         }
     });
 }
@@ -248,6 +284,7 @@ function getCoordinates() {
         success: callback,
         error: function (msg) {
             console.log('Error: ' + msg);
+            swal("Oops..", "Something went wrong!!", "error");
         }
     });
 }
@@ -272,6 +309,7 @@ function getPVInfo(id) {
         },
         error: function (msg) {
             console.log('Error: ' + msg);
+            swal("Oops..", "Something went wrong!!", "error");
         }
     });
 }
@@ -280,7 +318,7 @@ function showCoordinatesToTheMap(data) {
 
     if (data != null ){
         data.forEach(function (entry) {
-            if (entry.pv_name.length > 0) addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
+            if (entry) addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
             // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
         });
     }
