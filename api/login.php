@@ -20,8 +20,9 @@
 
 	
 	if ($_SESSION["times"] < 3) {
+		$data = json_decode(file_get_contents("php://input"));
 							echo json_encode(
-					array('message' => 'hi')
+					array('message' => $data)
 				);	
 	}
 	
