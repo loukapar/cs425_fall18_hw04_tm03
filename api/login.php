@@ -22,7 +22,10 @@
 	if ($_SESSION["times"] < 3) {
 		$_SESSION["times"] += 1;
 		$data = json_decode(file_get_contents("php://input"));
-		
+				
+							echo json_encode(
+					array('message' => $_SESSION["times")
+				);	
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
