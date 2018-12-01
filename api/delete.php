@@ -16,7 +16,9 @@
 	// Get raw posted data
 	$data = json_decode(file_get_contents("php://input"));
 	$pv->pv_id = $data->pv_id;
+	echo json_encode($pv->pv_id);
 	// Delete post
+	/*
 	if($pv->delete()) {
 		echo json_encode(
 		array('message' => 'PV deleted')
@@ -26,4 +28,5 @@
 		array('message' => 'PV deleted')
 		);
 	}
+	*/
 ?>
