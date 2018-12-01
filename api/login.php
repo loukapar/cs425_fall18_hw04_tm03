@@ -12,9 +12,9 @@
 	
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
-										echo json_encode(
-					array('message' => "hi")
-				);	
+		//echo json_encode(
+		//	array('message' => "hi")
+		//);	
 		
 	}
 		
