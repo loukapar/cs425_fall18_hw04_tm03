@@ -18,6 +18,7 @@
 	$pv->$pv_id = $data->pv_id;
 	// Delete post
 	echo json_encode($pv_id);
+	/*
 	if($pv->delete()) {
 		echo json_encode(
 		array('message' => 'PV deleted')
@@ -27,4 +28,5 @@
 		array('message' => 'PV deleted')
 		);
 	}
+	*/
 ?>
