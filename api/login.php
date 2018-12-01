@@ -24,7 +24,7 @@
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		$bcryptpassword;
 		if (!empty($username) && !empty($password)) {
-			if (validateUser($username, $password)) {
+			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
 				header('Location: ../front_end/map.html');
 			} else {
@@ -49,10 +49,10 @@
 	}
 	
 	
-	public function validateUser($username, $password) {
+	public function validateUser($username, $password, $conn) {
 		$dbstoredpassword = null;
-		$query = 'SELECT password FROM ' . $this->table . ' WHERE username = ?';
-		$stmt = $this->conn->prepare($query);
+		$query = 'SELECT password FROM USER WHERE username = ?';
+		$stmt = $conn->prepare($query);
 		$stmt->bindParam(1, $username);
 		
 		$stmt->execute();
