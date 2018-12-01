@@ -28,3 +28,15 @@ body{
     overflow-y: auto;
   }
 
+.pv_view_form{
+    font-family: 'Courier New', Courier, monospace;
+    margin: 3%;
+}
+
+.column_left{
+    width: 35%;
+}
+
+.column_right{
+    width: 65%;
+}

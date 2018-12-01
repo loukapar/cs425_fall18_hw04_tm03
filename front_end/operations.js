@@ -39,13 +39,18 @@ function onMarkerClick(ev) {
     var marker = ev.target;
     getPVInfo(marker.PVid);
     saveClick.PVid = marker.PVid; 
+    deleteClick.PVid = marker.PVid; 
+    deleteClick.marker = marker;
     document.getElementById('buttonDelete').onclick = deleteClick;
     document.getElementById('buttonEdit').onclick = editClick;
     document.getElementById('buttonSave').onclick = saveClick;
 }
 
 function deleteClick() {
-
+    if (deleteClick.marker) { // check
+        deleteAjax(deleteClick.PVid, deleteClick.marker);
+    }
+    $("#pv_profile_modal").modal('hide');
 }
 
 function saveClick(){
@@ -62,7 +67,6 @@ function saveClick(){
     }
 
     $("#myModal").modal('hide');
-
 }
 
 function editClick() {
@@ -85,6 +89,26 @@ function editClick() {
     $("#address").val( $("#modal_address").text());
     $("#operator").val($("#modal_operator").text());
     $("#message_text").val($("#modal_description").text());
+}
+
+function deleteAjax(pv_id, layer) {
+
+    $.ajax({
+        type: "DELETE", //rest Type
+        dataType: 'json', //mispelled
+        url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/delete.php",
+        // dataType: "JSON", // data type expected from server
+        data: {
+            pv_id: pv_id
+        },
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (msg) {
+            console.log(msg);
+            mymap.removeLayer(layer); // remove
+        }
+    });
+  
 }
 
 function putAjax(imageEnc, pv_id) {
@@ -222,8 +246,8 @@ function getCoordinates() {
         url: 'http://52.26.216.32/cs425_fall18_hw04_tm03/api/read.php',
         dataType: "JSON", // data type expected from server
         success: callback,
-        error: function () {
-            console.log('Error: ' + data);
+        error: function (msg) {
+            console.log('Error: ' + msg);
         }
     });
 }
