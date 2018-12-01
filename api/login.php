@@ -18,11 +18,15 @@
 	$database = new Database();	
 	$db = $database->connect();
 	if ($_SESSION["times"] < 3) {
+				echo json_encode(
+					array('message' => 'less than 3')
+				);		
+		/*
 		$data = json_decode(file_get_contents("php://input"));
 		
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
-		$bcryptpassword;
+		
 		if (!empty($username) && !empty($password)) {
 			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
@@ -42,6 +46,7 @@
 				array('message' => 'Something went wrong. Try again!')
 			);
 		}
+		*/
 	} else {
 		echo json_encode(
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
