@@ -20,6 +20,7 @@
 
 	
 	if ($_SESSION["times"] < 3) {
+		$_SESSION["times"] += 1;
 		$data = json_decode(file_get_contents("php://input"));
 		
 		$username = htmlspecialchars(strip_tags($data->password)); 
