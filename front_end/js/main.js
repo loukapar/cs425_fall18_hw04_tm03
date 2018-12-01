@@ -76,7 +76,7 @@ $(document).ready(function() {
 });
 
 function login(){
-    // postAjax($("#username").val(), $("#password").val());
+    postAjax($("#username").val(), $("#password").val());
 }
 
 function postAjax(username, password) {
