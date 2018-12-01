@@ -17,13 +17,15 @@
 	// Instantiate DB & connect
 	$database = new Database();	
 	$db = $database->connect();
-					echo json_encode(
+
+	
+	if ($_SESSION["times"] < 3) {
+							echo json_encode(
 					array('message' => 'hi')
 				);	
-	/*
-	if ($_SESSION["times"] < 3) {
+	}
 	
-		
+		/*
 		$data = json_decode(file_get_contents("php://input"));
 		
 		$username = htmlspecialchars(strip_tags($data->password)); 
