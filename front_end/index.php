@@ -60,7 +60,7 @@
 					
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
-							or <link>sign up</link>
+							or <span class="signup">sign up</span>
 						</span>
 					</div>
 
