@@ -11,7 +11,7 @@
 	include_once '../config/Database.php';
 	
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false'))
-		$_SESSION["times"] = 0;
+		$_SESSION['times'] = 0;
 	
 	
 	// Instantiate DB & connect
@@ -19,12 +19,12 @@
 	$db = $database->connect();
 
 	
-	if ($_SESSION["times"] < 3) {
-		$_SESSION["times"] += 1;
+	if ($_SESSION['times'] < 3) {
+		$_SESSION['times'] += 1;
 		$data = json_decode(file_get_contents("php://input"));
 				
 							echo json_encode(
-					array('message' => $_SESSION["times"])
+					array('message' => $_SESSION['times'])
 				);	
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
