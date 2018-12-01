@@ -39,6 +39,8 @@
 
 
 	// Create pv
-	$result = $pv->create();
+	$result = null;
+	if (($pv->IsNullOrEmptyString($pv->pv_coordinate_x) == false) && ($pv->IsNullOrEmptyString($pv->pv_coordinate_y) == false))
+		$result = $pv->create();
 	echo json_encode($result);	
 ?>
