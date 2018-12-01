@@ -12,9 +12,9 @@
 	
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
-		//echo json_encode(
-		//	array('message' => "hi")
-		//);	
+		echo json_encode(
+			array('message' => "hi")
+		);	
 		
 	}
 		
@@ -24,7 +24,7 @@
 	$database = new Database();	
 	$db = $database->connect();
 
-
+/*
 	if ($_SESSION['times'] < 3) {
 		$_SESSION['times'] += 1;
 		$data = json_decode(file_get_contents("php://input"));
@@ -48,6 +48,8 @@
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
 		);
 	}
+	
+	*/
 	
 		/*
 		
