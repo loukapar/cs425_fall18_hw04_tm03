@@ -25,7 +25,7 @@
 
     <script src="operations.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-
+	<script src="js/forms_validation.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
@@ -38,7 +38,7 @@
 
     <div id="mapid" class="map"></div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -75,7 +75,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add PV</h5>
+                    <h2 class="modal-title" id="exampleModalLabel">Create PV</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -84,7 +84,7 @@
                     <form>
                         <div class="form-group col-md-6">
                             <label for="name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="name">
+                            <input type="text" class="form-control" id="name" data-validate="Name is required">
                         </div>
 
                         <div class="form-group col-md-6">

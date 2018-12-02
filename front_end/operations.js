@@ -85,6 +85,8 @@ function deleteClick() {
 
 function saveClick() {
 
+    if (!validateFormOnSubmit()) return;
+
     if (document.getElementById("file").files.length > 0) {
 
         encodeImageFileAsURL(document.getElementById("file"), function (e) {
@@ -252,6 +254,8 @@ function clearAddForm() {
 
 function addClick() {
 
+    if (!validateFormOnSubmit()) return;
+    
     if (document.getElementById("file").files.length > 0) {
 
         encodeImageFileAsURL(document.getElementById("file"), function (e) {

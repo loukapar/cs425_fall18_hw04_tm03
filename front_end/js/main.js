@@ -79,11 +79,13 @@ $(document).ready(function() {
 
 function signup(){
 
-    // if ($("#modal_name").text().length)
+    if (!validateSignup()) return;
     postAjaxSignUp($("#orangeForm-name").val(), $("#orangeForm-pass").val());
 }
 
 function login(){
+
+    if (!validateSignin()) return;
     postAjax($("#username").val(), $("#password").val());
 }
 
