@@ -46,21 +46,21 @@
 				//echo "<script> window.location.replace('map.html') </script>";
 				//header('Location: ../front_end/map.html');
 				echo json_encode(
-					array('message' => 'Connected!', 'stat' => true)
+					array('message' => 'Connected!', 'stat' => 'success')
 				);
 				
 			} else {
 				$_SESSION['times'] += 1;
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
-					array('message' => 'Something went wrong. Try again!', 'stat' => false)
+					array('message' => 'Something went wrong. Try again!', 'stat' => 'error')
 				);
 			}
 		} else {
 			$_SESSION['times'] += 1;
 			$_SESSION["authenticated"] = 'false';
 						echo json_encode(
-				array('message' => 'Something went wrong. Try again!', 'stat' => false)
+				array('message' => 'Something went wrong. Try again!', 'stat' => 'error')
 			);
 		}
 	} else {
@@ -69,7 +69,7 @@
 				$_SESSION['last_login_time'] = time();
 			$msg = 'You have exceeded the maximum number of attempts.Try again in 5minutes';
 			echo json_encode(
-				array('message' => $msg, 'stat' => false)
+				array('message' => $msg, 'stat' => 'error')
 			);
 	}
 	
