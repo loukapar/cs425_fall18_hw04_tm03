@@ -250,12 +250,13 @@ function clearAddForm() {
     $("#address").val("");
     $("#operator").val("");
     $("#message_text").val("");
+    $("#file").val("");
 }
 
 function addClick() {
 
     if (!validateFormOnSubmit()) return;
-    
+
     if (document.getElementById("file").files.length > 0) {
 
         encodeImageFileAsURL(document.getElementById("file"), function (e) {

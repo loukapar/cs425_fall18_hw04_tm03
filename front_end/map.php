@@ -50,9 +50,9 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" data-validate="Name is required">
                             <label for="name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="name" data-validate="Name is required">
+                            <input type="text" class="form-control" id="name">
                         </div>
 
                         <div class="form-group col-md-6">
