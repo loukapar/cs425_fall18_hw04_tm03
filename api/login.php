@@ -28,7 +28,7 @@
 		$data = json_decode(file_get_contents("php://input"));
 				
 
-		$username = htmlspecialchars(strip_tags($data->password)); 
+		$username = htmlspecialchars(strip_tags($data->username)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
 			if ($check = validateUser($username, $password, $db)) {
