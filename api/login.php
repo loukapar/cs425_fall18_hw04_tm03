@@ -20,6 +20,10 @@
 	$database = new Database();	
 	$db = $database->connect();
 
+	
+	if (time() - $_SESSION['last_login_time'] < 1*60*60) {
+		$_SESSION['times'] = 0;
+	}
 
 	if ($_SESSION['times'] < 3) {
 		$_SESSION['times'] += 1;
@@ -53,7 +57,6 @@
 	} else {
 			$_SESSION["authenticated"] = 'false';
 			$_SESSION['last_login_time'] = time();
-			$_SESSION['times'] = 0; //prepei na fiei p dame
 			echo json_encode(
 				array('message' => 'You have exceeded the maximum number of attempts. Try again later', 'stat' => false)
 			);
