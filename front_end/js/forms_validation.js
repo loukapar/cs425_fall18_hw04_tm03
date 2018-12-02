@@ -7,7 +7,7 @@ function validateUsername(fld) {
         error = "You didn't enter a name.\n";
     } else if ((fld.value.length < 5) || (fld.value.length > 30)) {
         fld.style.background = 'Yellow';
-        error = "The name is the wrong length. (max=30)\n";
+        error = "The name is the wrong length. (4-30 characters)\n";
     } else if (illegalChars.test(fld.value)) {
         fld.style.background = 'Yellow';
         error = "The name contains illegal characters.\n";
