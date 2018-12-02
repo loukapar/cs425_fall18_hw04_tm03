@@ -43,7 +43,7 @@
 
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username" id="username">
+						<input class="input100" type="text" name="username" id="username"  pattern="[a-zA-Z1-9]" title="Username must not empty">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Username</span>
 					</div>
@@ -67,7 +67,7 @@
 							or
 
 							<div class="text-center">
-								<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Signup</a>
+								<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Signup</a> 
 							</div>
 						</span>
 					</div>
@@ -92,7 +92,7 @@
 				</div>
 				<div class="modal-body mx-3">
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username" id="orangeForm-name">
+						<input class="input100" type="text" name="username" id="orangeForm-name" >
 						<span class="focus-input100"></span>
 						<span class="label-input100">Username</span>
 					</div>
@@ -104,7 +104,7 @@
 
 				</div>
 				<div class="container-login100-form-btn">
-					<button id="signup" class="login100-form-btn">
+					<button id="signup" class="login100-form-btn" data-dismiss="modal">
 						Signup
 					</button>
 				</div>
@@ -112,7 +112,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 
