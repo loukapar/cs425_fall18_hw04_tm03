@@ -58,3 +58,7 @@ body{
     background-color: #262829 !important;
     border-color: #323333 !important;
 }
+
+#modal_description{
+    word-wrap: break-word;
+}
