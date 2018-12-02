@@ -96,12 +96,13 @@
 		if($num > 0) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			$dbstoredpassword = $row['password'];
-			if ($dbstoredpassword == $password)
+			if ($dbstoredpassword == $password){
 				return true;
-			else
-				return false;
+			} else {
+				return "false hi";
+			}
 		} else {
-			return false;
+			return "false bye";
 		}
 	}
 
