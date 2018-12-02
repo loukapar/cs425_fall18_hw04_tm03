@@ -9,7 +9,6 @@
 	$password = null;
 	
 	include_once '../config/Database.php';
-		$here = "hi";
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
 		unset($_SESSION['last_login_time']);
@@ -30,7 +29,6 @@
 	}
 
 	if ($_SESSION['times'] < 3) {
-		$_SESSION['times'] += 1;
 		unset($_SESSION['last_login_time']);
 		$data = json_decode(file_get_contents("php://input"));
 				
@@ -47,12 +45,14 @@
 				);
 				
 			} else {
+				$_SESSION['times'] += 1;
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
-					array('message' => 'Something went wrong. Try again!' . $here, 'stat' => false)
+					array('message' => 'Something went wrong. Try again!', 'stat' => false)
 				);
 			}
 		} else {
+			$_SESSION['times'] += 1;
 			$_SESSION["authenticated"] = 'false';
 						echo json_encode(
 				array('message' => 'Something went wrong. Try again!', 'stat' => false)
