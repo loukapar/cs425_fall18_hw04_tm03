@@ -9,10 +9,11 @@
 	$password = null;
 	
 	include_once '../config/Database.php';
-	
+		$here = "hi";
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
 		unset($_SESSION['last_login_time']);
+		$here .= " shistus";
 	}
 		
 	
@@ -20,11 +21,11 @@
 	// Instantiate DB & connect
 	$database = new Database();	
 	$db = $database->connect();
-	$here = "hi";
+
 	if (isset($_SESSION['last_login_time'])){
 		if (time() - $_SESSION['last_login_time'] < 1*60*60) 
 			$_SESSION['times'] = 0;
-		$here = "shistus";
+		$here .= " shistus";
 	}
 	
 
