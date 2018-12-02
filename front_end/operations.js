@@ -93,7 +93,7 @@ function saveClick() {
         encodeImageFileAsURL(document.getElementById("file"), function (e) {
             // use result in callback...
             var imageEnc = e.target.result;
-            putAjax(imageEnc, saveClick.PVid)
+            putAjax(imageEnc, saveClick.PVid);
         });
     } else {
         putAjax("", saveClick.PVid);
@@ -184,6 +184,7 @@ function putAjax(imageEnc, pv_id) {
             // addPointToMap(posX, posY, msg.pv_id);
             console.log(msg);
             swal("Good job!", "Change Success!", "success");
+            if (imageEnc.length > 0) window.location.reload(true);
         },
         error: function (msg) {
             console.log('Error: ' + msg);
@@ -257,7 +258,7 @@ function clearAddForm() {
 function checkImage(){
     var size = parseFloat($("#file")[0].files[0].size / 1024).toFixed(2);
     if (size > 1024){
-        swal("Oops..", "Image must be up to 1024 KB..", "warning");
+        swal("Oops..", "Your image size is " + size + "kb\nImage must be up to 1024 KB..", "warning");
         $("#file").val("");
     } 
 }
