@@ -21,12 +21,13 @@
 	$database = new Database();	
 	$db = $database->connect();
 
-	/*
+	
 	if (isset($_SESSION['last_login_time'])){
-		if (time() - $_SESSION['last_login_time'] >= 1*60*60) 
+		if (time() - $_SESSION['last_login_time'] > 1*60*60) {
 			$_SESSION['times'] = 0;
+			unset($_SESSION['last_login_time']);
+		}
 	}
-	*/
 
 	if ($_SESSION['times'] < 3) {
 		$_SESSION['times'] += 1;
