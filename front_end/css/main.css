@@ -478,7 +478,7 @@ input.input100 {
   width: 100%;
   height: 50px;
   border-radius: 10px;
-  background: #6675df;
+  background: #1ba6c9;
 
   font-family: Montserrat-Bold;
   font-size: 12px;
@@ -494,7 +494,7 @@ input.input100 {
 }
 
 .login100-form-btn:hover {
-  background: #333333;
+  background: rgba(17, 207, 198, 0.849);
 }
 
 
@@ -622,7 +622,7 @@ input.input100 {
 #signup{
   font-size: medium;
   margin: 5%;
-
+  background-color: #1ba6c9;
 }
 
 .modal-open .modal {
@@ -630,5 +630,6 @@ input.input100 {
   overflow-y: auto;
 }
 
-/* #signup:hover{
-} */
+#opensignup{
+  background-color: rgba(59, 200, 224, 0.247);
+}
