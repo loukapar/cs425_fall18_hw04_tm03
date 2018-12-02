@@ -105,7 +105,7 @@ function postAjax(username, password) {
 
             if (msg.stat){
                 swal("Good job!", msg.message, "success");
-                window.location = "map.php";
+                // window.location = "map.php";
             }else swal("Oops..", msg.message, "error");
         },
         error: function (msg) {
