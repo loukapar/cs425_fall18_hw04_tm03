@@ -20,6 +20,7 @@ function initializeMap() {
     document.getElementById('buttonCloseAdd').onclick = closeClickAdd;
     document.getElementById('buttonCloseProfile').onclick = closeClickProfile;
     document.getElementById('logout').onclick = logout;
+    document.getElementById('file').onchange = checkImage;
 
 }
 
@@ -253,12 +254,21 @@ function clearAddForm() {
     $("#file").val("");
 }
 
+function checkImage(){
+    var size = parseFloat($("#file")[0].files[0].size / 1024).toFixed(2);
+    if (size > 1){
+        swal("Oops..", "Image must be up to 1.0 MB!!", "warning");
+        $("#file").val("");
+    } 
+}
+
 function addClick() {
 
     if (!validateFormOnSubmit()) return;
 
     if (document.getElementById("file").files.length > 0) {
 
+     
         encodeImageFileAsURL(document.getElementById("file"), function (e) {
             // use result in callback...
             var imageEnc = e.target.result;
