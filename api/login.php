@@ -10,7 +10,7 @@
 	
 	$data = json_decode(file_get_contents("php://input"));
 	if (empty($data->username) && empty($data->password)){
-		session_destroy();
+		$_SESSION["authenticated"] = 'false';
 		exit();
 	}
 
