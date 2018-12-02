@@ -56,12 +56,11 @@
 		}
 	} else {
 			$_SESSION["authenticated"] = 'false';
-			$_SESSION['last_login_time'] = time();
+			if (!isset($_SESSION['last_login_time']))
+				$_SESSION['last_login_time'] = time();
 			echo json_encode(
 				array('message' => 'You have exceeded the maximum number of attempts. Try again later', 'stat' => false)
 			);
-			
-	
 	}
 	
 	function test() { return true;}
