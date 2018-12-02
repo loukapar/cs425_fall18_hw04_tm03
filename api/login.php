@@ -87,9 +87,8 @@
 	
 	function validateUser($username, $password, $conn) {
 		$dbstoredpassword = null;
-		$query = "SELECT password FROM USER WHERE username = ':username' ";
+		$query = "SELECT password FROM USER WHERE username = '" . $username . "' ";
 		$stmt = $conn->prepare($query);
-		$stmt->bindParam(":username", $username);
 		
 		$stmt->execute();
 		$num = $stmt->rowCount();
