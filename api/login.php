@@ -44,8 +44,6 @@
 		if (!empty($username) && !empty($password)) {
 			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
-				//echo "<script> window.location.replace('map.html') </script>";
-				//header('Location: ../front_end/map.html');
 				echo json_encode(
 					array('message' => 'Connected!', 'stat' => 'success')
 				);
@@ -73,35 +71,6 @@
 				array('message' => $msg, 'stat' => 'error')
 			);
 	}
-	
-	function test() { return true;}
-	
-		/*
-		
-
-		
-		if (!empty($username) && !empty($password)) {
-			if (validateUser($username, $password, $db)) {
-				$_SESSION["authenticated"] = 'true';
-				header('Location: ../front_end/map.html');
-			} else {
-				$_SESSION["authenticated"] = 'false';
-				$_SESSION["times"] = $_SESSION["times"] + 1;
-				echo json_encode(
-					array('message' => 'Something went wrong. Try again!')
-				);
-			}
-		} 
-		else {
-			$_SESSION["authenticated"] = 'false';
-			$_SESSION["times"] = $_SESSION["times"] + 1;
-
-		}
-		
-	} else {
-
-	}
-	*/
 	
 	function validateUser($username, $password, $conn) {
 		$dbstoredpassword = null;
