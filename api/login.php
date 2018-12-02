@@ -31,7 +31,7 @@
 		$username = htmlspecialchars(strip_tags($data->username)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
-			if ($check = validateUser($username, $password, $db)) {
+			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
 				//header('Location: ../front_end/map.html');
 			} else {
@@ -39,7 +39,7 @@
 			}
 			
 			echo json_encode(
-				array('message' => $check)
+				array('message' => $_SESSION['authenticated'])
 			);	
 				
 		} else {
@@ -98,10 +98,10 @@
 			if ($dbstoredpassword == $password){
 				return true;
 			} else {
-				return "false hi";
+				return false;
 			}
 		} else {
-			return $query;
+			return false;
 		}
 	}
 
