@@ -8,6 +8,13 @@
 	$username = null;
 	$password = null;
 	
+	$data = json_decode(file_get_contents("php://input"));
+	if (empty($data->username) && empty($data->password)){
+		session_destroy();
+		exit();
+	}
+
+	
 	include_once '../config/Database.php';
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
@@ -30,9 +37,7 @@
 
 	if ($_SESSION['times'] < 3) {
 		unset($_SESSION['last_login_time']);
-		$data = json_decode(file_get_contents("php://input"));
 				
-
 		$username = htmlspecialchars(strip_tags($data->username)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
