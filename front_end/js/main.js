@@ -102,7 +102,8 @@ function postAjax(username, password) {
         data: JSON.stringify(element),
         success: function (msg) {
             console.log(msg);
-            // swal("Good job!", "Login Success!", "success");
+            swal("Good job!", "Login Success!", "success");
+            window.location = "map.html";
         },
         error: function (msg) {
             console.log('Error: ' + msg);
