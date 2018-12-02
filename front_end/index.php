@@ -91,16 +91,16 @@
 					</button>
 				</div>
 				<div class="modal-body mx-3">
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-								<input class="input100" type="text" name="username" id="orangeForm-name">
-								<span class="focus-input100"></span>
-								<span class="label-input100">Username</span>
-							</div>
+					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="username" id="orangeForm-name">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Username</span>
+					</div>
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-							<input class="input100" type="password" name="pass" id="orangeForm-pass">
-							<span class="focus-input100"></span>
-							<span class="label-input100">Password</span>
-						</div>
+						<input class="input100" type="password" name="pass" id="orangeForm-pass">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Password</span>
+					</div>
 
 				</div>
 				<div class="container-login100-form-btn">

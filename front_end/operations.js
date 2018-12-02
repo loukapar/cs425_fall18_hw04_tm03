@@ -19,6 +19,12 @@ function initializeMap() {
     getCoordinates();
     document.getElementById('buttonCloseAdd').onclick = closeClickAdd;
     document.getElementById('buttonCloseProfile').onclick = closeClickProfile;
+    document.getElementById('logout').onclick = logout;
+}
+
+
+function logout(){
+    window.location = "index.php";
 }
 
 function closeClickAdd(){

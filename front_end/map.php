@@ -31,6 +31,9 @@
 
 <body>
 
+    <a href="#" class="btn btn-info btn-lg content" id="logout">
+        <span class="glyphicon glyphicon-log-out"></span> Log out
+    </a>
 
     <div id="mapid" class="map"></div>
 
@@ -139,12 +142,12 @@
                             <input type="text" class="form-control" id="inverter">
                         </div>
 
-                        <div class="form-group col-md-6" >
+                        <div class="form-group col-md-6">
                             <label for="operator" class="col-form-label">Operator:</label>
                             <input type="text" class="form-control" id="operator">
                         </div>
 
-                        
+
                         <div class="form-group col-md-6">
                             <label for="address" class="col-form-label">Address:</label>
                             <input type="text" class="form-control" id="address">
@@ -192,9 +195,9 @@
                     <div class="row">
                         <div class="col-3">
                             <p></p>
-                            <p class="text-center"><img src="img/no-image-available.png" class="img-rounded" alt="Cinque Terre" id="picture"
-                                    width="60%" height="200px"></p>
-                                    <!-- img/image.jpg -->
+                            <p class="text-center"><img src="img/no-image-available.png" class="img-rounded" alt="Cinque Terre"
+                                    id="picture" width="60%" height="200px"></p>
+                            <!-- img/image.jpg -->
                         </div>
 
                         <div class="col-9 pv_view_form">

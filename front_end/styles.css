@@ -9,6 +9,7 @@ body{
     top: 0;
     left: 0;
     right: 0;
+    z-index: -1;
 }
 
 #abc {
@@ -39,4 +40,21 @@ body{
 
 .column_right{
     width: 65%;
+}
+
+.content {
+    right: 0;
+    top: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    z-index: 10; 
+    position:relative;
+    position: absolute;
+    margin: 10px;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #262829 !important;
+    border-color: #323333 !important;
 }
