@@ -66,7 +66,7 @@
 			$_SESSION["authenticated"] = 'false';
 			if (!isset($_SESSION['last_login_time']))
 				$_SESSION['last_login_time'] = time();
-			$msg = 'You have exceeded the maximum number of attempts.Try again in 5minutes';
+			$msg = 'You have exceeded the maximum number of attempts. Try again in 5 minutes';
 			echo json_encode(
 				array('message' => $msg, 'stat' => 'error')
 			);
@@ -82,7 +82,7 @@
 		if($num > 0) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			$dbstoredpassword = $row['password'];
-			if ($dbstoredpassword == $password){
+			if (password_verify($password, $dbstoredpassword)){
 				return true;
 			} else {
 				return false;

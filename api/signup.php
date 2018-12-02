@@ -21,7 +21,7 @@
 	$stmt = $db->prepare($query);
 	
 	$stmt->bindParam(':username', $username);
-	$stmt->bindParam(':password', $password);
+	$stmt->bindParam(':password', password_hash($password,PASSWORD_DEFAULT));
 	
 	if($stmt->execute()) {
 		echo json_encode(
