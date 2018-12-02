@@ -37,6 +37,7 @@
 				echo json_encode(
 					array('message' => 'Connected!')
 				);
+				
 			} else {
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
