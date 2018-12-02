@@ -35,26 +35,29 @@
 				//echo "<script> window.location.replace('map.html') </script>";
 				//header('Location: ../front_end/map.html');
 				echo json_encode(
-					array('message' => 'Connected!')
+					array('message' => 'Connected!', 'stat' => true)
 				);
 				
 			} else {
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
-					array('message' => 'Something went wrong. Try again!')
+					array('message' => 'Something went wrong. Try again!', 'stat' => false)
 				);
 			}
 		} else {
 			$_SESSION["authenticated"] = 'false';
 						echo json_encode(
-				array('message' => 'Something went wrong. Try again!')
+				array('message' => 'Something went wrong. Try again!', 'stat' => false)
 			);
 		}
 	} else {
+			$_SESSION["authenticated"] = 'false';
+			$_SESSION['last_login_time'] = time();
 			$_SESSION['times'] = 0; //prepei na fiei p dame
-				echo json_encode(
-			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
-		);
+			echo json_encode(
+				array('message' => 'You have exceeded the maximum number of attempts. Try again later', 'stat' => false)
+			);
+			
 	
 	}
 	
