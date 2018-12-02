@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	header('Location: ../front_end/map.html');
 	header('Access-Control-Allow-Origin: *');
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Methods: POST');
