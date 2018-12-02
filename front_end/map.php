@@ -1,3 +1,5 @@
+<?php require_once('../api/authentication.php'); ?>
+
 <!DOCTYPE html>
 <html>
 
