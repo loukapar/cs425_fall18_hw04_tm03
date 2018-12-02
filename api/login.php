@@ -56,7 +56,7 @@
 	
 	}
 	
-	public function test() { return true;}
+	function test() { return true;}
 	
 		/*
 		
