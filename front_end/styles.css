@@ -54,9 +54,9 @@ body{
 }
 
 .btn-info {
-    color: #fff;
-    background-color: #26282979 !important;
-    border-color: #323333b2 !important;
+    color: rgba(255, 255, 255, 0.815);
+    background-color: #26282941 !important;
+    border-color: #32333352 !important;
 }
 
 #modal_description{
