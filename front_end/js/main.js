@@ -79,8 +79,15 @@ $(document).ready(function() {
 
 function signup(){
 
-    if (!validateSignup()) return;
-    postAjaxSignUp($("#orangeForm-name").val(), $("#orangeForm-pass").val());
+    var password = $("#orangeForm-pass").val();
+    var name = $("#orangeForm-name").val();
+    $("#orangeForm-name").val("");
+    $("#orangeForm-pass").val("");
+    if (!validateSignup()){
+        return;
+    }
+
+    postAjaxSignUp(name, password);
 }
 
 function login(){
