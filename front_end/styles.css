@@ -59,6 +59,12 @@ body{
     border-color: #32333352 !important;
 }
 
+.btn-info:hover {
+    color: rgba(255, 255, 255, 0.945);
+    background-color: #262829ab !important;
+    border-color: #323333d7 !important;
+}
+
 #modal_description{
     word-wrap: break-word;
 }
