@@ -1,5 +1,30 @@
 <?php
 	session_start();
+	
+	public function validateUser($username, $password, $conn) {
+		/*
+		$dbstoredpassword = null;
+		$query = 'SELECT password FROM USER WHERE username = ?';
+		$stmt = $conn->prepare($query);
+		$stmt->bindParam(1, $username);
+		
+		$stmt->execute();
+		$num = $stmt->rowCount();
+		if($num > 0) {
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			$dbstoredpassword = $row['password'];
+			if ($dbstoredpassword == $password)
+				return true;
+			else
+				return false;
+		} else {
+			return false;
+		}
+		*/
+		return true;
+	}
+	
+	
 	header('Access-Control-Allow-Origin: *');
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Methods: POST');
@@ -82,27 +107,6 @@
 	}
 	*/
 	
-	public function validateUser($username, $password, $conn) {
-		/*
-		$dbstoredpassword = null;
-		$query = 'SELECT password FROM USER WHERE username = ?';
-		$stmt = $conn->prepare($query);
-		$stmt->bindParam(1, $username);
-		
-		$stmt->execute();
-		$num = $stmt->rowCount();
-		if($num > 0) {
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			$dbstoredpassword = $row['password'];
-			if ($dbstoredpassword == $password)
-				return true;
-			else
-				return false;
-		} else {
-			return false;
-		}
-		*/
-		return true;
-	}
+
 
 ?>
