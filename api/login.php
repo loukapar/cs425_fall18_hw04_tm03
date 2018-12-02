@@ -33,15 +33,13 @@
 		if (!empty($username) && !empty($password)) {
 			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
-				//header('Location: ../front_end/map.html');
+				header('Location: ../front_end/map.html');
 			} else {
 				$_SESSION["authenticated"] = 'false';
+				echo json_encode(
+					array('message' => 'Something went wrong. Try again!')
+				);
 			}
-			
-			echo json_encode(
-				array('message' => $_SESSION['authenticated'])
-			);	
-				
 		} else {
 			$_SESSION["authenticated"] = 'false';
 						echo json_encode(
