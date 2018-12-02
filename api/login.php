@@ -33,10 +33,10 @@
 		if (!empty($username) && !empty($password)) {
 			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
-				echo json_encode(
-					array('message' => 'Connected!')
-				);
-					header('Location: ../front_end/map.html');
+				//echo json_encode(
+				//	array('message' => 'Connected!')
+				//);
+				header('Location: ../front_end/map.html');
 			} else {
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
