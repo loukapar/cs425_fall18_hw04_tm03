@@ -30,7 +30,7 @@
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
-			if (validateUser($username, $password, $db)) {
+			if ($this->validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
 				//header('Location: ../front_end/map.html');
 			} else {
