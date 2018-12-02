@@ -12,6 +12,7 @@
 	
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
+		unset($_SESSION['last_login_time']);
 	}
 		
 	
