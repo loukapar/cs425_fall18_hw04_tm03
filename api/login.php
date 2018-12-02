@@ -31,7 +31,7 @@
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
-			if (test()) {
+			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
 				//header('Location: ../front_end/map.html');
 			} else {
@@ -85,8 +85,7 @@
 	}
 	*/
 	
-	//public function validateUser($username, $password, $conn) {
-		/*
+	function validateUser($username, $password, $conn) {
 		$dbstoredpassword = null;
 		$query = 'SELECT password FROM USER WHERE username = ?';
 		$stmt = $conn->prepare($query);
@@ -104,9 +103,7 @@
 		} else {
 			return false;
 		}
-		*/
-		//return true;
-	//}
+	}
 
 
 ?>
