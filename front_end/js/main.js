@@ -96,7 +96,6 @@ function postAjax(username, password) {
         password : password
     };
 
-    console.log(JSON.stringify(element));
 
     $.ajax({
         type: "POST", //rest Type
@@ -106,7 +105,7 @@ function postAjax(username, password) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(element),
         success: function (msg) {
-            console.log(msg);
+            // console.log(msg);
 
             if (msg.stat == 'success'){
                 swal("Good job!", msg.message, "success");
@@ -114,7 +113,7 @@ function postAjax(username, password) {
             }else if (msg.stat == 'error') swal("Oops..", msg.message, "error");
         },
         error: function (msg) {
-            console.log('Error: ' + msg);
+            // console.log('Error: ' + msg);
             swal("Oops..", "Something went wrong!!", "error");
         }
     });
@@ -127,8 +126,6 @@ function postAjaxSignUp(username, password) {
         password : password
     };
 
-    console.log(JSON.stringify(element));
-
     $.ajax({
         type: "POST", //rest Type
         dataType: 'json', //mispelled
@@ -137,11 +134,11 @@ function postAjaxSignUp(username, password) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(element),
         success: function (msg) {
-            console.log(msg);
+            // console.log(msg);
             swal("Good job!", "Signup Success!", "success");
         },
         error: function (msg) {
-            console.log('Error: ' + msg);
+            // console.log('Error: ' + msg);
             swal("Oops..", "Something went wrong!!", "error");
         }
     });

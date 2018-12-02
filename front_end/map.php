@@ -5,7 +5,7 @@
 
 <head>
 
-    <title>Quick Start - Leaflet</title>
+    <title>PV-MAP</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

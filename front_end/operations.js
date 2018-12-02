@@ -138,12 +138,12 @@ function deleteAjax(pv_id, layer) {
         async: true,
         contentType: "application/json; charset=utf-8",
         success: function (msg) {
-            console.log(msg);
+            // console.log(msg);
             mymap.removeLayer(layer); // remove
             swal("Good job!", "Delete Success!", "success");
         },
         error: function (err) {
-            console.log('Error: ' + err);
+            // console.log('Error: ' + err);
             swal("Oops..", "Something went wrong!!", "error");
         }
     });
@@ -171,7 +171,6 @@ function putAjax(imageEnc, pv_id) {
         ["pv_operator", $("#operator").val()],
         ["pv_description", $("#message_text").val()],
     ];
-    console.log(JSON.stringify(element));
 
     $.ajax({
         type: "PUT", //rest Type
@@ -181,13 +180,12 @@ function putAjax(imageEnc, pv_id) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(element),
         success: function (msg) {
-            // addPointToMap(posX, posY, msg.pv_id);
-            console.log(msg);
+            // console.log(msg);
             swal("Good job!", "Change Success!", "success");
             if (imageEnc.length > 0) window.location.reload(true);
         },
         error: function (msg) {
-            console.log('Error: ' + msg);
+            // console.log('Error: ' + msg);
             swal("Oops..", "Something went wrong!!", "error");
         }
     });
@@ -217,7 +215,6 @@ function postAjax(imageEnc, posX, posY) {
         pv_description: $("#message_text").val()
     };
 
-    console.log(JSON.stringify(element));
 
     $.ajax({
         type: "POST", //rest Type
@@ -228,7 +225,7 @@ function postAjax(imageEnc, posX, posY) {
         data: JSON.stringify(element),
         success: function (msg) {
             addPointToMap(posX, posY, msg.pv_id);
-            console.log(msg);
+            // console.log(msg);
             swal("Good job!", "Added Success!", "success");
         }
     });
@@ -308,7 +305,7 @@ function getCoordinates() {
         dataType: "JSON", // data type expected from server
         success: callback,
         error: function (msg) {
-            console.log('Error: ' + msg);
+            // console.log('Error: ' + msg);
             swal("Oops..", "Something went wrong!!", "error");
         }
     });
@@ -333,7 +330,7 @@ function getPVInfo(id) {
 
         },
         error: function (msg) {
-            console.log('Error: ' + msg);
+            // console.log('Error: ' + msg);
             swal("Oops..", "Something went wrong!!", "error");
         }
     });
@@ -349,12 +346,6 @@ function showCoordinatesToTheMap(data) {
 
     }
 
-    // if (data != null ){
-    //     data.forEach(function (entry) {
-    //         if (entry) addPointToMap(entry.pv_coordinate_x, entry.pv_coordinate_y,  entry.pv_id);
-    //         // console.log("(" + entry.pv_coordinate_x + " , " + entry.pv_coordinate_y + ") --> " + marker.PVid);
-    //     });
-    // }
 }
 
 function addPointToMap(posX, posY, id) {
