@@ -34,6 +34,9 @@
 			if (validateUser($username, $password, $db)) {
 				$_SESSION["authenticated"] = 'true';
 				header('Location: ../front_end/map.html');
+				echo json_encode(
+					array('message' => 'Connected!')
+				);
 			} else {
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
