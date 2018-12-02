@@ -11,6 +11,7 @@
 	$data = json_decode(file_get_contents("php://input"));
 	if (empty($data->username) && empty($data->password)){
 		$_SESSION["authenticated"] = 'false';
+		echo json_encode("");
 		exit();
 	}
 
