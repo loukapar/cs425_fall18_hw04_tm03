@@ -256,8 +256,8 @@ function clearAddForm() {
 
 function checkImage(){
     var size = parseFloat($("#file")[0].files[0].size / 1024).toFixed(2);
-    if (size > 1){
-        swal("Oops..", "You have upload image " + size + "mb\nImage must be up to 1.0 MB!!", "warning");
+    if (size > 1024){
+        swal("Oops..", "Image must be up to 1024 KB..", "warning");
         $("#file").val("");
     } 
 }

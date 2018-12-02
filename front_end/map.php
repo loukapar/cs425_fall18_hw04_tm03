@@ -124,7 +124,7 @@
 
                         <div class="form-group" style="margin-left:10px; margin-right: 10px">
                             <label class="custom-file">
-                                <label for="custom-file-input" class="col-form-label">Upload:</label>
+                                <label for="custom-file-input" class="col-form-label">Upload: (Max image size = 1024kb)</label>
                                 <input type="file" id="file" class="custom-file-input">
                                 <span class="custom-file-control"></span>
                             </label>
