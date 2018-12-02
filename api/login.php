@@ -13,7 +13,7 @@
 	if((empty($_SESSION["authenticated"])) && ($_SESSION["authenticated"] != 'true') && ($_SESSION["authenticated"] != 'false')){
 		$_SESSION['times'] = 0;
 		unset($_SESSION['last_login_time']);
-		$here .= " shistus";
+		$here .= " shistus1";
 	}
 		
 	
@@ -25,7 +25,7 @@
 	if (isset($_SESSION['last_login_time'])){
 		if (time() - $_SESSION['last_login_time'] < 1*60*60) 
 			$_SESSION['times'] = 0;
-		$here .= " shistus";
+		$here .= " shistus2";
 	}
 	
 
