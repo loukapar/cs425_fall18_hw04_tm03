@@ -625,5 +625,10 @@ input.input100 {
 
 }
 
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 /* #signup:hover{
 } */
