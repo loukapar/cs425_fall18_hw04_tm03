@@ -87,7 +87,7 @@
 	
 	function validateUser($username, $password, $conn) {
 		$dbstoredpassword = null;
-		$query = 'SELECT password FROM USER WHERE username = ?';
+		$query = 'SELECT password FROM USER WHERE username = \'?\'';
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(1, $username);
 		
