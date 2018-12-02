@@ -20,6 +20,15 @@ function initializeMap() {
     document.getElementById('buttonCloseAdd').onclick = closeClickAdd;
     document.getElementById('buttonCloseProfile').onclick = closeClickProfile;
     document.getElementById('logout').onclick = logout;
+
+    
+    $(window).on('popstate', function(event) {
+        alert("back");
+    });
+
+    $(window).on('pushstate', function(event) {
+        alert("push");
+    }); // This one pushes u to forward page through history...
 }
 
 
@@ -377,14 +386,6 @@ function parseDataToForm(element){
     $("#modal_address").text(element.pv_address);
     $("#modal_operator").text(element.pv_operator);
 }
-
-$(window).on('popstate', function(event) {
-    alert("back");
-});
-
-$(window).on('pushstate', function(event) {
-    alert("push");
-}); // This one pushes u to forward page through history...
 
 
 window.onload = initializeMap;
