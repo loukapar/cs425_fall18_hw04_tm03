@@ -78,6 +78,8 @@ $(document).ready(function() {
 
 
 function signup(){
+
+    // if ($("#modal_name").text().length)
     postAjaxSignUp($("#orangeForm-name").val(), $("#orangeForm-pass").val());
 }
 
@@ -104,10 +106,10 @@ function postAjax(username, password) {
         success: function (msg) {
             console.log(msg);
 
-            if (msg.stat){
+            if (msg.stat == 'success'){
                 swal("Good job!", msg.message, "success");
                 window.location = "map.php";
-            }else swal("Oops..", msg.message, "error");
+            }else if (msg.stat == 'error') swal("Oops..", msg.message, "error");
         },
         error: function (msg) {
             console.log('Error: ' + msg);
