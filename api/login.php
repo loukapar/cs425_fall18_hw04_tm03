@@ -62,7 +62,7 @@
 			$_SESSION["authenticated"] = 'false';
 			if (!isset($_SESSION['last_login_time']))
 				$_SESSION['last_login_time'] = time();
-			$msg = 'You have exceeded the maximum number of attempts. Come back in ' . (($_SESSION['last_login_time'] + 5*60) - time())/60 . 'minutes!';
+			$msg = 'You have exceeded the maximum number of attempts.Try again in 5minutes';
 			echo json_encode(
 				array('message' => $msg, 'stat' => false)
 			);
