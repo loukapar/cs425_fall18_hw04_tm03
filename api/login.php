@@ -102,7 +102,7 @@
 				return "false hi";
 			}
 		} else {
-			return "false bye";
+			return $query;
 		}
 	}
 
