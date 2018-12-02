@@ -20,10 +20,12 @@
 	// Instantiate DB & connect
 	$database = new Database();	
 	$db = $database->connect();
-
-	if (isset($_SESSION['last_login_time']))
+	$here = "hi";
+	if (isset($_SESSION['last_login_time'])){
 		if (time() - $_SESSION['last_login_time'] < 1*60*60) 
 			$_SESSION['times'] = 0;
+		$here = "shistus";
+	}
 	
 
 	if ($_SESSION['times'] < 3) {
@@ -46,7 +48,7 @@
 			} else {
 				$_SESSION["authenticated"] = 'false';
 				echo json_encode(
-					array('message' => 'Something went wrong. Try again!', 'stat' => false)
+					array('message' => 'Something went wrong. Try again!' . $here, 'stat' => false)
 				);
 			}
 		} else {
