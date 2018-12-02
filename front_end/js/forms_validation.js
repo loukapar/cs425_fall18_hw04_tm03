@@ -58,7 +58,7 @@ function validateFormOnSubmit() {
     reason += validateUsername(document.getElementById('name'));
 
     if (reason != "") {
-        alert("Some fields need correction:\n" + reason);
+        swal("Some fields need correction..", reason, "warning");
         return false;
     }
 
@@ -72,7 +72,7 @@ function validateSignin() {
     reason += validatePassword(document.getElementById('password'));
 
     if (reason != "") {
-        alert("Some fields need correction:\n" + reason);
+        swal("Some fields need correction..", reason, "warning");
         return false;
     }
 
@@ -88,7 +88,7 @@ function validateSignup() {
 
 
     if (reason != "") {
-        alert("Some fields need correction:\n" + reason);
+        swal("Some fields need correction..", reason, "warning");
         return false;
     }
 
