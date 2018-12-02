@@ -21,14 +21,6 @@ function initializeMap() {
     document.getElementById('buttonCloseProfile').onclick = closeClickProfile;
     document.getElementById('logout').onclick = logout;
 
-    
-    $(window).on('popstate', function(event) {
-        alert("back");
-    });
-
-    $(window).on('pushstate', function(event) {
-        alert("push");
-    }); // This one pushes u to forward page through history...
 }
 
 
@@ -385,6 +377,31 @@ function parseDataToForm(element){
     $("#modal_corY").text(element.pv_coordinate_y);
     $("#modal_address").text(element.pv_address);
     $("#modal_operator").text(element.pv_operator);
+}
+
+function HandleBackFunctionality(){
+    if(window.event)
+   {
+        if(window.event.clientX < 40 && window.event.clientY < 0)
+        {
+            alert("Browser back button is clicked...");
+        }
+        else
+        {
+            alert("Browser refresh button is clicked...");
+        }
+    }
+    else
+    {
+        if(event.currentTarget.performance.navigation.type == 1)
+        {
+             alert("Browser refresh button is clicked...");
+        }
+        if(event.currentTarget.performance.navigation.type == 2)
+        {
+             alert("Browser back button is clicked...");
+        }
+    }
 }
 
 
