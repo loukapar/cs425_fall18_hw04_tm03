@@ -36,9 +36,10 @@
 			} else {
 				$_SESSION["authenticated"] = 'false';
 			}
-							echo json_encode(
-					array('message' => $_SESSION['times'])
-				);	
+			
+			echo json_encode(
+				array('message' => $_SESSION['authenticated'])
+			);	
 				
 		} else {
 			$_SESSION["authenticated"] = 'false';
@@ -82,6 +83,7 @@
 	*/
 	
 	public function validateUser($username, $password, $conn) {
+		/*
 		$dbstoredpassword = null;
 		$query = 'SELECT password FROM USER WHERE username = ?';
 		$stmt = $conn->prepare($query);
@@ -99,6 +101,7 @@
 		} else {
 			return false;
 		}
+		*/
 		return true;
 	}
 
