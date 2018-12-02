@@ -71,6 +71,7 @@
 
 
 $(document).ready(function() {
+    postAjax("", "");
     document.getElementById('login').onclick = login;
     document.getElementById('signup').onclick = signup;
 });
@@ -78,7 +79,6 @@ $(document).ready(function() {
 
 function signup(){
     postAjaxSignUp($("#orangeForm-name").val(), $("#orangeForm-pass").val());
-    // $("#modalRegisterForm").modal('hide');
 }
 
 function login(){
@@ -134,11 +134,11 @@ function postAjaxSignUp(username, password) {
         data: JSON.stringify(element),
         success: function (msg) {
             console.log(msg);
-            swal("Good job!", "Signup Success!", "success");
+            // swal("Good job!", "Signup Success!", "success");
         },
         error: function (msg) {
             console.log('Error: ' + msg);
-            swal("Oops..", "Something went wrong!!", "error");
+            // swal("Oops..", "Something went wrong!!", "error");
         }
     });
 }
