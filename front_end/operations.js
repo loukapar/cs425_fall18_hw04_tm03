@@ -24,20 +24,20 @@ function initializeMap() {
 }
 
 
-function logout(){
+function logout() {
     window.location = "index.html";
 }
 
-function closeClickAdd(){
+function closeClickAdd() {
     clearAddForm();
 }
 
-function closeClickProfile(){
+function closeClickProfile() {
     clearViewProfileForm();
 }
 
-function clearViewProfileForm(){
-    $("#picture").attr("src","img/no-image-available.png");
+function clearViewProfileForm() {
+    $("#picture").attr("src", "img/no-image-available.png");
     $("#modal_name").val("");
     $("#modal_systemPower").val("");
     $("#modal_sensors").val("");
@@ -68,8 +68,8 @@ function onMarkerClick(ev) {
 
     var marker = ev.target;
     getPVInfo(marker.PVid);
-    saveClick.PVid = marker.PVid; 
-    deleteClick.PVid = marker.PVid; 
+    saveClick.PVid = marker.PVid;
+    deleteClick.PVid = marker.PVid;
     deleteClick.marker = marker;
     document.getElementById('buttonDelete').onclick = deleteClick;
     document.getElementById('buttonEdit').onclick = editClick;
@@ -83,7 +83,7 @@ function deleteClick() {
     $("#pv_profile_modal").modal('hide');
 }
 
-function saveClick(){
+function saveClick() {
 
     if (document.getElementById("file").files.length > 0) {
 
@@ -105,18 +105,18 @@ function editClick() {
     $("#buttonSave").show();
 
     $("#name").val($("#modal_name").text());
-    $("#system_power").val( $("#modal_systemPower").text());
+    $("#system_power").val($("#modal_systemPower").text());
     $("#sensors").val($("#modal_sensors").text());
     $("#annual_production").val($("#modal_annualPr").text());
     $("#CO2_avoided").val($("#modal_COavoided").text());
-    $("#reimbursement").val( $("#modal_reimbursement").text());
+    $("#reimbursement").val($("#modal_reimbursement").text());
     $("#solar_panel_modules").val($("#modal_solarPanelModules").text());
     $("#azimuth_angle").val($("#modal_azimuthAngle").text());
-    $("#inclination_angle").val( $("#modal_inclinationAngle").text());
+    $("#inclination_angle").val($("#modal_inclinationAngle").text());
     $("#communication").val($("#modal_communication").text());
     $("#commission_date").val($("#modal_date").text());
     $("#inverter").val($("#modal_inverter").text());
-    $("#address").val( $("#modal_address").text());
+    $("#address").val($("#modal_address").text());
     $("#operator").val($("#modal_operator").text());
     $("#message_text").val($("#modal_description").text());
 }
@@ -144,13 +144,13 @@ function deleteAjax(pv_id, layer) {
             swal("Oops..", "Something went wrong!!", "error");
         }
     });
-  
+
 }
 
 function putAjax(imageEnc, pv_id) {
 
     var element = [
-        pv_id, 
+        pv_id,
         ["pv_name", $("#name").val()],
         ["pv_power", $("#system_power").val()],
         ["pv_sensors", $("#sensors").val()],
@@ -163,7 +163,7 @@ function putAjax(imageEnc, pv_id) {
         ["pv_communication", $("#communication").val()],
         ["pv_date", $("#commission_date").val()],
         ["pv_inverter", $("#inverter").val()],
-        ["pv_address", $("#address").val()], 
+        ["pv_address", $("#address").val()],
         ["encoded_image", imageEnc],
         ["pv_operator", $("#operator").val()],
         ["pv_description", $("#message_text").val()],
@@ -203,7 +203,7 @@ function postAjax(imageEnc, posX, posY) {
         pv_azimuth_angl: $("#azimuth_angle").val(),
         pv_inclination_angl: $("#inclination_angle").val(),
         pv_communication: $("#communication").val(),
-        pv_date :  $("#commission_date").val(),
+        pv_date: $("#commission_date").val(),
         pv_inverter: $("#inverter").val(),
         pv_address: $("#address").val(),
         pv_coordinate_x: posX,
@@ -230,9 +230,9 @@ function postAjax(imageEnc, posX, posY) {
     });
 }
 
-function clearAddForm(){
-    
-    $("#picture").attr("src","img/no-image-available.png");
+function clearAddForm() {
+
+    $("#picture").attr("src", "img/no-image-available.png");
     $("#name").val("");
     $("#system_power").val("");
     $("#sensors").val("");
@@ -257,7 +257,7 @@ function addClick() {
         encodeImageFileAsURL(document.getElementById("file"), function (e) {
             // use result in callback...
             var imageEnc = e.target.result;
-         
+
             postAjax(imageEnc, addClick.posX, addClick.posY);
         });
     } else {
@@ -325,11 +325,11 @@ function getPVInfo(id) {
 
 function showCoordinatesToTheMap(data) {
 
-    try{
-        for(var k in data) {
-            addPointToMap(data[k].pv_coordinate_x, data[k].pv_coordinate_y,  data[k].pv_id);
-         }
-    }catch(err){
+    try {
+        for (var k in data) {
+            addPointToMap(data[k].pv_coordinate_x, data[k].pv_coordinate_y, data[k].pv_id);
+        }
+    } catch (err) {
 
     }
 
@@ -341,7 +341,7 @@ function showCoordinatesToTheMap(data) {
     // }
 }
 
-function addPointToMap(posX, posY, id){
+function addPointToMap(posX, posY, id) {
     var marker = L.marker([posX, posY]);
     marker.PVid = id;
     marker.addTo(mymap).on('click', onMarkerClick);
@@ -356,10 +356,10 @@ function encodeImageFileAsURL(element, onLoadCallback) {
 }
 
 
-function parseDataToForm(element){
+function parseDataToForm(element) {
 
-    if (element.pv_photo.length > 0) $("#picture").attr("src","http://52.26.216.32/cs425_fall18_hw04_tm03/resources/" + element.pv_photo);
-    else $("#picture").attr("src","img/no-image-available.png");
+    if (element.pv_photo.length > 0) $("#picture").attr("src", "http://52.26.216.32/cs425_fall18_hw04_tm03/resources/" + element.pv_photo);
+    else $("#picture").attr("src", "img/no-image-available.png");
     $("#modal_name").text(element.pv_name);
     $("#modal_systemPower").text(element.pv_power);
     $("#modal_sensors").text(element.pv_sensors);
@@ -379,31 +379,24 @@ function parseDataToForm(element){
     $("#modal_operator").text(element.pv_operator);
 }
 
-function HandleBackFunctionality(){
-    if(window.event)
-   {
-        if(window.event.clientX < 40 && window.event.clientY < 0)
-        {
-            alert("Browser back button is clicked...");
-        }
-        else
-        {
-            alert("Browser refresh button is clicked...");
-        }
-    }
-    else
-    {
-        if(event.currentTarget.performance.navigation.type == 1)
-        {
-             alert("Browser refresh button is clicked...");
-        }
-        if(event.currentTarget.performance.navigation.type == 2)
-        {
-             alert("Browser back button is clicked...");
-        }
-    }
-}
-
-
 window.onload = initializeMap;
+
+$(window).on('pushstate', function (event) {
+    alert("push");
+}); // This one pushes u to forward page through history...
+
+window.history.replaceState(); //work exactly like pushstate bt this one replace the history instead of creating new one...
+
+window.history.backward(); // To move backward through history, just fire this event...
+
+window.history.forward();// To move forward through history ...
+
+window.history.go(-1); // Go back to one page(or whatever value u passed) through history
+
+window.history.go(1); // Go forward to one page through history..
+
+
+$(window).on('popstate', function (event) {
+    alert("pop");
+});
 

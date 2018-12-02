@@ -117,29 +117,29 @@ function postAjax(username, password) {
 
 function postAjaxSignUp(username, password) {
 
-    // var element = {
-    //     username : username,
-    //     password : password
-    // };
+    var element = {
+        username : username,
+        password : password
+    };
 
-    // console.log(JSON.stringify(element));
+    console.log(JSON.stringify(element));
 
-    // $.ajax({
-    //     type: "POST", //rest Type
-    //     dataType: 'json', //mispelled
-    //     url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/signup.php",
-    //     async: true,
-    //     contentType: "application/json; charset=utf-8",
-    //     data: JSON.stringify(element),
-    //     success: function (msg) {
-    //         console.log(msg);
-    //         swal("Good job!", "Signup Success!", "success");
-    //     },
-    //     error: function (msg) {
-    //         console.log('Error: ' + msg);
-    //         swal("Oops..", "Something went wrong!!", "error");
-    //     }
-    // });
+    $.ajax({
+        type: "POST", //rest Type
+        dataType: 'json', //mispelled
+        url: "http://52.26.216.32/cs425_fall18_hw04_tm03/api/signup.php",
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(element),
+        success: function (msg) {
+            console.log(msg);
+            swal("Good job!", "Signup Success!", "success");
+        },
+        error: function (msg) {
+            console.log('Error: ' + msg);
+            swal("Oops..", "Something went wrong!!", "error");
+        }
+    });
 }
 
 

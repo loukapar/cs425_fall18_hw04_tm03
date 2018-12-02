@@ -31,7 +31,7 @@
 
 </head>
 
-<body onbeforeunload="HandleBackFunctionality()">
+<body>
 
     <a href="#" class="btn btn-info btn-lg content" id="logout">
         <span class="glyphicon glyphicon-log-out"></span> Log out
