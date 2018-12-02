@@ -30,18 +30,24 @@
 		$username = htmlspecialchars(strip_tags($data->password)); 
 		$password = htmlspecialchars(strip_tags($data->password)); 
 		if (!empty($username) && !empty($password)) {
+			if (validateUser($username, $password, $db)) {
+				$_SESSION["authenticated"] = 'true';
+				//header('Location: ../front_end/map.html');
+			} else {
 				$_SESSION["authenticated"] = 'false';
+			}
 							echo json_encode(
 					array('message' => $_SESSION['times'])
 				);	
 				
 		} else {
+			$_SESSION["authenticated"] = 'false';
 						echo json_encode(
 				array('message' => 'Something went wrong. Try again!')
 			);
 		}
 	} else {
-			$_SESSION['times'] = 0;
+			$_SESSION['times'] = 0; //prepei na fiei p dame
 				echo json_encode(
 			array('message' => 'You have exceeded the maximum number of attempts. Try again later')
 		);
@@ -75,8 +81,7 @@
 	}
 	*/
 	
-	//public function validateUser($username, $password, $conn) {
-		/*
+	public function validateUser($username, $password, $conn) {
 		$dbstoredpassword = null;
 		$query = 'SELECT password FROM USER WHERE username = ?';
 		$stmt = $conn->prepare($query);
@@ -94,8 +99,7 @@
 		} else {
 			return false;
 		}
-		*/
-	//	return true;
-	//}
+		return true;
+	}
 
 ?>
