@@ -81,13 +81,13 @@ function signup(){
 
     var password = $("#orangeForm-pass").val();
     var name = $("#orangeForm-name").val();
-    $("#orangeForm-name").val("");
-    $("#orangeForm-pass").val("");
     if (!validateSignup()){
         return;
     }
 
     postAjaxSignUp(name, password);
+    $("#orangeForm-name").val("");
+    $("#orangeForm-pass").val("");
 }
 
 function login(){
