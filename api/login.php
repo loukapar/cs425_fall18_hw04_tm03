@@ -37,9 +37,9 @@
 				$_SESSION["authenticated"] = 'false';
 			}
 			
-			echo json_encode(
-				array('message' => $_SESSION['authenticated'])
-			);	
+			//echo json_encode(
+			//	array('message' => $_SESSION['authenticated'])
+			//);	
 				
 		} else {
 			$_SESSION["authenticated"] = 'false';
