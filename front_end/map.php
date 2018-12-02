@@ -29,6 +29,10 @@
 	<script src="js/forms_validation.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <meta name="author" content="TEAM03">
+	<meta name="description" content="Map page">
+	<meta name="keywords" content="HTML,CSS,javascript">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
