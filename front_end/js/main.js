@@ -138,11 +138,11 @@ function postAjaxSignUp(username, password) {
         data: JSON.stringify(element),
         success: function (msg) {
             console.log(msg);
-            // swal("Good job!", "Signup Success!", "success");
+            swal("Good job!", "Signup Success!", "success");
         },
         error: function (msg) {
             console.log('Error: ' + msg);
-            // swal("Oops..", "Something went wrong!!", "error");
+            swal("Oops..", "Something went wrong!!", "error");
         }
     });
 }
