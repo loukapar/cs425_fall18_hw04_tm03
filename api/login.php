@@ -31,7 +31,7 @@
 
 	if ($_SESSION['times'] < 3) {
 		$_SESSION['times'] += 1;
-		
+		unset($_SESSION['last_login_time']);
 		$data = json_decode(file_get_contents("php://input"));
 				
 
