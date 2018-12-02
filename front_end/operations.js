@@ -24,7 +24,7 @@ function initializeMap() {
 
 
 function logout(){
-    window.location = "index.php";
+    window.location = "index.html";
 }
 
 function closeClickAdd(){
