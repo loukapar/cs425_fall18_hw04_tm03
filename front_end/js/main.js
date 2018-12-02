@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 function signup(){
     postAjaxSignUp($("#orangeForm-name").val(), $("#orangeForm-pass").val());
-    $("#modalRegisterForm").modal('hide');
+    // $("#modalRegisterForm").modal('hide');
 }
 
 function login(){
